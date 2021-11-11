@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import Link from 'next/link';
 import AccountQuickLinksMobile from './AccountQuickLinksMobile';
 
 const MobileHeaderActions = ({ auth, ecomerce }) => {
     const { cartItems } = ecomerce;
+    const { isLoggedIn } = useSelector(state => {
+        const { userSignedIn } = state;
+        return {
+            userSignedIn
+        };
+    });
     return (
         <div className="navigation__right">
             <Link href="/account/shopping-cart">
@@ -16,7 +22,7 @@ const MobileHeaderActions = ({ auth, ecomerce }) => {
                 </a>
             </Link>
 
-            {auth.isLoggedIn && Boolean(auth.isLoggedIn) === true ? (
+            {isLoggedIn && Boolean(isLoggedIn) === true ? (
                 <AccountQuickLinksMobile />
             ) : (
                 <div className="header__extra">

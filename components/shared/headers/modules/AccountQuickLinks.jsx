@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import Link from 'next/link';
-import { logOut } from '~/store/auth/action';
+import { logOut } from '~/store/auth2/action';
 
 const AccountQuickLinks = (props) => {
     const dispatch = useDispatch();

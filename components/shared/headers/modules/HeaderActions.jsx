@@ -3,12 +3,19 @@ import { connect } from 'react-redux';
 import Link from 'next/link';
 import MiniCart from '~/components/shared/headers/modules/MiniCart';
 import AccountQuickLinks from '~/components/shared/headers/modules/AccountQuickLinks';
-
+import { useSelector } from 'react-redux'
 const HeaderActions = ({ ecomerce, auth }) => {
+    const { isLoggedIn } = useSelector(state => {
+        const { userSignedIn } = state;
+        return {
+            userSignedIn
+        };
+    });
+
     const { compareItems, wishlistItems } = ecomerce;
     // views
     let headerAuthView;
-    if (auth.isLoggedIn && Boolean(auth.isLoggedIn) === true) {
+    if (isLoggedIn && Boolean(isLoggedIn) === true) {
         headerAuthView = <AccountQuickLinks isLoggedIn={true} />;
     } else {
         headerAuthView = <AccountQuickLinks isLoggedIn={false} />;

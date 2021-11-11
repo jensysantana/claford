@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
-import { logOut } from '../../../../store/auth/action';
+import { logOut } from '../../../../store/auth2/action';
 import { Dropdown, Menu } from 'antd';
 class AccountQuickLinks extends Component {
     constructor(props) {

@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
-const Logo = ({ type }) => {
+const Logo = ({ type, maxWidth = 156, maxHeight = 42, ...rest }) => {
     let data;
     if (type === 'autopart') {
         data = {
@@ -41,14 +42,27 @@ const Logo = ({ type }) => {
     }
     else {
         data = {
-            url: '/',
+            url: process.env.SERVERS.frontApp.url,
             img: '/static/img/logo_light.png',
+            // img: '/static/img/jensysantanar3.png',
         };
     }
     return (
         <Link href={data.url}>
-            <a className="ps-logo">
-                <img src={data.img} alt="" />
+            {/* <a className="ps-logo">
+                <img
+                    src={data.img} alt="Claford"
+                />
+            </a> */}
+            <a className="ps-logo" style={{ maxWidth, maxHeight }}>
+                <Image
+                    alt={process.env.title}
+                    src={data.img}
+                    width={156}
+                    height={42}
+                    objectFit
+                    {...rest}
+                />
             </a>
         </Link>
     );

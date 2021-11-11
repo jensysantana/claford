@@ -1,12 +1,17 @@
 import React from 'react';
-
-import BreadCrumb from '~/components/elements/BreadCrumb';
 import Register from '~/components/partials/account/Register';
 import PageContainer from '~/components/layouts/PageContainer';
-import FooterDefault from '~/components/shared/footers/FooterDefault';
-import Newletters from '~/components/partials/commons/Newletters';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const RegisterPage = () => {
+export async function getServerSideProps({ locale, ...rest }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common', 'auth'])),
+        }, // will be passed to the page component as props
+    }
+}
+
+export default function RegisterPage(props) {
     const breadCrumb = [
         {
             text: 'Home',
@@ -19,15 +24,20 @@ const RegisterPage = () => {
 
     return (
         <>
-            <PageContainer footer={<FooterDefault />} title="Register">
-                <div className="ps-page--my-account">
-                    <BreadCrumb breacrumb={breadCrumb} />
-                    <Register />
-                </div>
-                <Newletters layout="container" />
-            </PageContainer>
+            {/* <PageContainer footer={<FooterDefault />} title="Register"> */}
+            <div className="ps-page--my-account">
+                {/* <BreadCrumb breacrumb={breadCrumb} /> */}
+                <Register {...props} />
+            </div>
+            {/* <Newletters layout="container" /> */}
+            {/* </PageContainer> */}
         </>
     );
 };
 
-export default RegisterPage;
+/*
+    const changeLanguage = lng => {
+        console.log('lng: ', lng);
+        i18n.changeLanguage('en');
+    }
+*/
