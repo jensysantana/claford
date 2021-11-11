@@ -13,7 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 export async function getServerSideProps({ locale, query, ...rest }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['auth'])),
+            // ...(await serverSideTranslations(locale, ['auth'])),
             navigaTo: query?.to || ''
         },
     }
@@ -41,8 +41,8 @@ const LoginPage = (props) => {
         return await fieldValidations.validationGenerator(fields, lang);
     }
 
-    const lang = useTranslation();
-    const { t, i18n } = lang;
+    // const lang = useTranslation();
+    // const { t, i18n } = lang;
     const router = useRouter();
     const [cookies, setCookie, removeCookie] = useCookies();
     const [form] = Form.useForm();
@@ -141,11 +141,15 @@ const LoginPage = (props) => {
                             </div>
                             <div className="ps-tab active" id="register">
                                 <div className="ps-form__content">
-                                    <h5 className="mb-5">{t('auth:text.21')}</h5>
+                                    <h5 className="mb-5">
+                                        {/* {t('auth:text.21')} */}
+                                        jensy ii
+                                    </h5>
                                     <div className="form-group">
                                         <Form.Item
                                             name="email"
-                                            label={t('auth:text.4')}
+                                            // label={t('auth:text.4')}
+                                            label="email"
                                             initialValue=""
                                             // hasFeedback
                                             validateFirst
@@ -171,16 +175,20 @@ const LoginPage = (props) => {
                                     <div className="form-group">
                                         <Form.Item>
                                             <Checkbox checked={staySignedIn} onChange={onCheckboxChange}>
-                                                {t('auth:text.23')}
-                                                <p>{t('auth:text.22')} <Link href="/" className="text-primary">
+                                                {/* {t('auth:text.23')} */}
+                                                nameememememeee
+                                                <p>
+                                                    {/* {t('auth:text.22')}  */}
+                                                    beffoooooooooree
+                                                    <Link href="/" className="text-primary">
 
-                                                    <a className="text-primary" onClick={function (e) {
-                                                        e.preventDefault();
-                                                        setBtnMoreOrLess(() => !btnMoreOrLess);
-                                                    }}>
-                                                        {t(btnMoreOrLess ? 'auth:buttons.22' : 'auth:buttons.24')}
-                                                    </a>
-                                                </Link>
+                                                        <a className="text-primary" onClick={function (e) {
+                                                            e.preventDefault();
+                                                            setBtnMoreOrLess(() => !btnMoreOrLess);
+                                                        }}>
+                                                            {t(btnMoreOrLess ? 'auth:buttons.22' : 'auth:buttons.24')}
+                                                        </a>
+                                                    </Link>
                                                 </p>
 
                                             </Checkbox>
@@ -188,7 +196,8 @@ const LoginPage = (props) => {
                                                 className="alert-stay-sign-in alert-stay-sign-in--information my-3">
                                                 <div className="learn-info">
                                                     <p id="learn-more-msg">
-                                                        {t('auth:text.28', { APP_NAME: proccess.env.title })}
+                                                        {/* {t('auth:text.28', { APP_NAME: proccess.env.title })} */}
+                                                        PPPPWPEPEPEPEPEEPEPEPE
                                                     </p>
                                                 </div>
                                             </section>}
@@ -203,11 +212,18 @@ const LoginPage = (props) => {
                                                 <i className="fa fa-sign-in fa-1x mr-2"></i>
                                             }
                                         >
-                                            {t('auth:buttons.3')}
+                                            {/* {t('auth:buttons.3')} */}
+                                            BUTTONNNN
                                         </ButtonWithLoadding>
                                         <p className="mt-3">
-                                            {t('auth:text.45')} <Link href="/account/register">
-                                                <a className="text-primary">{t('auth:buttons.7')}</a>
+                                            {/* {t('auth:text.45')}  */}
+                                            PPPPPPP TEXT 45
+                                            <Link href="/account/register">
+                                                <a className="text-primary">
+                                                    {/* {t('auth:buttons.7')} */}
+
+                                                    LINK BUTTON 77777777777777
+                                                </a>
                                             </Link>
                                         </p>
                                     </div>
