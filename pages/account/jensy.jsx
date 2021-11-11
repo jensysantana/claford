@@ -8,7 +8,7 @@ import { useCookies } from 'react-cookie';
 import { FieldValidations } from '~/validations/authValidationFields';
 import { DataFormater } from '~/helpers/helper-classes';
 import Logo from '~/components/elements/common/Logo';
-// import ButtonWithLoadding from '~/components/elements/Button';
+import ButtonWithLoadding from '~/components/elements/Button';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export async function getServerSideProps({ locale, query, ...rest }) {
