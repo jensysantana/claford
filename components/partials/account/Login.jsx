@@ -126,7 +126,7 @@ export default function SignIn({ navigaTo, ...rest }) {
                                 <Form.Item
                                     name="email"
                                     label={t('auth:text.4')}
-                                    initialValue="jensysantana@gmail.co"
+                                    initialValue=""
                                     // hasFeedback
                                     validateFirst
                                     validateTrigger={["onBlur", "onSubmit"]}// 'onChange'

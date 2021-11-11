@@ -1,6 +1,6 @@
 import React from 'react';
 import Register from '~/components/partials/account/Register';
-import PageContainer from '~/components/layouts/PageContainer';
+// import PageContainer from '~/components/layouts/PageContainer';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export async function getServerSideProps({ locale, ...rest }) {
@@ -12,15 +12,15 @@ export async function getServerSideProps({ locale, ...rest }) {
 }
 
 export default function RegisterPage(props) {
-    const breadCrumb = [
-        {
-            text: 'Home',
-            url: '/',
-        },
-        {
-            text: 'Register an account',
-        },
-    ];
+    // const breadCrumb = [
+    //     {
+    //         text: 'Home',
+    //         url: '/',
+    //     },
+    //     {
+    //         text: 'Register an account',
+    //     },
+    // ];
 
     return (
         <>

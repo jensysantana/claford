@@ -298,7 +298,7 @@ export default function Register({ csrf, ...props }) {
                                 <Form.Item
                                     name="fname"
                                     label={t('auth:text.2')}
-                                    initialValue="jens"
+                                    initialValue=""
                                     hasFeedback={antdFields.fname.hasFeedback}
                                     validateFirst
                                     validateTrigger={validateTrigger}
@@ -320,7 +320,7 @@ export default function Register({ csrf, ...props }) {
                                 <Form.Item
                                     name="lname"
                                     label={t('auth:text.3')}
-                                    initialValue="santan"
+                                    initialValue=""
                                     hasFeedback={antdFields.lname.hasFeedback}
                                     validateFirst
                                     validateTrigger={validateTrigger}
@@ -341,7 +341,7 @@ export default function Register({ csrf, ...props }) {
                                 <Form.Item
                                     name="email"
                                     label={t('auth:text.4')}
-                                    initialValue="jensysantana@gmail.co"
+                                    initialValue=""
                                     validateFirst
                                     validateTrigger={[...validateTrigger,]}// 'onChange'
                                     hasFeedback={antdFields.email.hasFeedback}
