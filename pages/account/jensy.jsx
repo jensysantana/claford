@@ -7,18 +7,18 @@ import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
 import { FieldValidations } from '~/validations/authValidationFields';
 import { DataFormater } from '~/helpers/helper-classes';
-import Logo from '~/components/elements/common/Logo';
-import ButtonWithLoadding from '~/components/elements/Button';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import Logo from '~/components/elements/common/Logo';
+// import ButtonWithLoadding from '~/components/elements/Button';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export async function getServerSideProps({ locale, query, ...rest }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['auth'])),
-            navigaTo: query.to || ''
-        },
-    }
-}
+// export async function getServerSideProps({ locale, query, ...rest }) {
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale, ['auth'])),
+//             navigaTo: query.to || ''
+//         },
+//     }
+// }
 
 
 const LoginPage = (props) => {
