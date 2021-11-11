@@ -24,8 +24,8 @@ const nextSettings = {
         title: 'Claford',
         titleDescription: 'Claford market-place, is an online and offline shop multi purpose.',
         keyWords: 'claford, market, marketplace, store, sales, buy, purchace, raffle, auction, phone, laptop, tablet',
-        contactEmail: 'jensysantana@gmail.com',
-        RECAPTCHA_SITE_KEY: "6LedekgcAAAAAErpI_VI8xw59BFvcUe-Te0KluML",
+        contactEmail: '',
+        RECAPTCHA_SITE_KEY: "",
         apiServer: {
             url: apiUrl,
             assetsUrl: `${apiUrl}/assets`
