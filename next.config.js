@@ -11,7 +11,9 @@
 const { i18n } = require('./next-i18next.config');
 // import en from './locales/en/translation.json';
 // import es from './locales/es/translation.json';
-
+console.log(' 111111 -----------------------process.env.NODE_ENV-------------------------');
+console.log(process.env.NODE_ENV)
+console.log(' 2222222 -----------------------process.env.NODE_ENV-------------------------');
 const apiUrl = process.env.NODE_ENV === 'development' ? `http://localhost:4300` : 'https://sidetransactions.claford.com';
 const nextSettings = {
     optimizeFonts: false,
@@ -35,7 +37,7 @@ const nextSettings = {
                 url: process.env.NODE_ENV === 'development' ? `http://localhost:3005` : 'https://claford.com',
             },
             authServer: {
-                servUrl: process.env.NODE_ENV === 'development' ? `http://10.0.0.64:43284` : 'https://authside.claford.com',
+                servUrl: process.env.NODE_ENV === 'development' ? `http://10.0.0.64:43284` : 'https://authserver.claford.com',
                 apiBase: '/api/v1',
                 headers: {
 
