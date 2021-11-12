@@ -6,7 +6,8 @@ export async function getServerSideProps({ locale, query, ...rest }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['auth'])),
-            navigaTo: query?.to || ''
+            navigaTo: query?.to || '',
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         },
     }
 }

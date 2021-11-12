@@ -28,7 +28,9 @@ async function validationFields(lang) {
 <h5>Recover your password and get in board for more discounts, coupons and best prices.</h5>
 <p className="mt-3">Enter the email address associated with your {value.client.appName} account.</p>
 */
-export default function SignIn({ csrf, navigaTo }) {
+
+export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY }) {
+
     const router = useRouter();
     const lang = useTranslation();
     const { t } = lang;
@@ -333,7 +335,7 @@ export default function SignIn({ csrf, navigaTo }) {
                             </div>
                             <ReCAPTCHA
                                 size="invisible"
-                                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                sitekey={RECAPTCHA_SITE_KEY}
                                 // onChange={onChangeCaptch}
                                 ref={gReRef}
                             />
