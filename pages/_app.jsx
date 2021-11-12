@@ -35,9 +35,9 @@ function App({ Component, pageProps }) {
 
     useEffect(() => {
         async function getCsrf() {
-            // const resp = await Api.AUTH.getCsrfAuth();
-            // setstate(() => resp.data.token);
-            setstate(() => '');
+            const resp = await Api.AUTH.getCsrfAuth();
+            setstate(() => resp.data.token);
+            // setstate(() => '');
         }
         getCsrf();
 

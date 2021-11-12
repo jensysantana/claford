@@ -20,7 +20,9 @@ async function validationFields(lang) {
     const fieldValidations = new FieldValidations();
     return await fieldValidations.validationGenerator(fields, lang);
 }
-
+console.log('///// 11111');
+console.log(process.env.RECAPTCHA_SITE_KEY);
+console.log('/////===222');
 export default function SignIn({ navigaTo, ...rest }) {
     const lang = useTranslation();
     const { t, i18n } = lang;
@@ -171,7 +173,7 @@ export default function SignIn({ navigaTo, ...rest }) {
                                                 <i className="fa fa-exclamation-circle text-success" aria-hidden="true"></i>
                                             </h2> */}
                                             <p id="learn-more-msg">
-                                                {t('auth:text.28', { APP_NAME: proccess.env.title })}
+                                                {t('auth:text.28', { APP_NAME: process.env.title })}
                                             </p>
                                         </div>
                                     </section>}
