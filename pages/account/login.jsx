@@ -21,7 +21,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // https://claford-dxhyhtb9b-jensysantana.vercel.app/account/jensy
 // https://claford-b4b80ja21-jensysantana.vercel.app/account/jensy
-export async function getServerSideProps({ locale, query, ...rest }) {
+export async function getStaticProps({ locale, query, ...rest }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['auth'])),

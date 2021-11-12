@@ -10,7 +10,7 @@ import { DataFormater } from '~/helpers/helper-classes';
 import Logo from '~/components/elements/common/Logo';
 import ButtonWithLoadding from '~/components/elements/Button';
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-export async function getServerSideProps({ locale, query, ...rest }) {
+export async function getStaticProps({ locale, query, ...rest }) {
     return {
         props: {
             // ...(await serverSideTranslations(locale, ['auth'])),
@@ -45,8 +45,8 @@ const LoginPage = (props) => {
         return await fieldValidations.validationGenerator(fields, lang);
     }
 
-    // const lang = useTranslation();
-    // const { t, i18n } = lang;
+    const lang = useTranslation();
+    const { t, i18n } = lang;
     const router = useRouter();
     const [cookies, setCookie, removeCookie] = useCookies();
     const [form] = Form.useForm();
