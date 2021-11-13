@@ -50,7 +50,7 @@ function App({ Component, pageProps }) {
         <CookiesProvider>
             <MasterLayout>
                 {/* <Component {...pageProps} /> */}
-                <PersistGate loading={<p>INDEX ____APPPP .......................LOADDING</p>} persistor={storePersistor.persistor}>
+                <PersistGate loading={<p style={{ textAlign: 'center' }}>Loading...</p>} persistor={storePersistor.persistor}>
                     <Component {...pageProps} csrf={state} />
                 </PersistGate>
             </MasterLayout>

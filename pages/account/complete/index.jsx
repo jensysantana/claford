@@ -13,7 +13,7 @@ import { DataFormater } from '~/helpers/helper-classes';
 import { resendActivationAccountActionClean, sendMailRecoveryAccountFromEmailAction } from '~/store/auth2/action';
 import ReCAPTCHA from "react-google-recaptcha";
 
-function Complete({csrf}) {
+function Complete({ csrf, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const router = useRouter();
     const dispatch = useDispatch();
@@ -88,7 +88,7 @@ function Complete({csrf}) {
                         }
                     });
                     break;
-    
+
                 default:
                     setDBMessage(() => {
                         return {
@@ -101,7 +101,7 @@ function Complete({csrf}) {
         }
 
         return () => {
-            return ;
+            return;
         }
     }, [selectUser.resendEmail.name]);
 
@@ -132,7 +132,7 @@ function Complete({csrf}) {
                 // sbfIcon: '',
                 sbfTextDidNotREmail: state.sbfTextDidNotREmail,
                 sbfTextResendEmail: state.sbfTextResendEmail,
-                message:dBMessage.message
+                message: dBMessage.message
             }
 
             const cookieOptions = {
@@ -160,10 +160,10 @@ function Complete({csrf}) {
         }
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
-        dispatch(sendMailRecoveryAccountFromEmailAction({ 
-            email: state.email, 
-            reCaptch: token, 
-            csrf 
+        dispatch(sendMailRecoveryAccountFromEmailAction({
+            email: state.email,
+            reCaptch: token,
+            csrf
         }));
         setCounter(counter + 1);
     }
@@ -229,7 +229,7 @@ function Complete({csrf}) {
                                 </CompleteContent>
                                 <ReCAPTCHA
                                     size="invisible"
-                                    sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                    sitekey={RECAPTCHA_SITE_KEY}
                                     // onChange={onChangeCaptch}
                                     ref={gReRef}
                                 />
@@ -290,7 +290,8 @@ function Complete({csrf}) {
 export async function getServerSideProps({ locale, ...rest }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['common', 'auth']))
+            ...(await serverSideTranslations(locale, ['common', 'auth'])),
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

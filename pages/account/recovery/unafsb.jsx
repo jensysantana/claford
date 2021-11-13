@@ -29,7 +29,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-function Unafsb({ csrf }) {
+function Unafsb({ csrf, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const [cookies, setCookie, removeCookie] = useCookies(['__recoveryUnafsb']);
     const router = useRouter();
@@ -442,7 +442,7 @@ function Unafsb({ csrf }) {
                             </div>
                             <ReCAPTCHA
                                 size="invisible"
-                                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                sitekey={RECAPTCHA_SITE_KEY}
                                 // onChange={onChangeCaptch}
                                 ref={gReRef}
                             />
@@ -495,7 +495,8 @@ function Unafsb({ csrf }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['auth']))
+            ...(await serverSideTranslations(locale, ['auth'])),
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

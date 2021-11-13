@@ -7,8 +7,8 @@ import { Form, Input } from 'antd';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'react-i18next';
 import {
-     resendActivationAccountActionClean,
-     sendMailRecoveryAccountFromEmailAction 
+    resendActivationAccountActionClean,
+    sendMailRecoveryAccountFromEmailAction
 } from '~/store/auth2/action';
 import { FieldValidations } from '~/validations/authValidationFields';
 import { DataFormater } from '~/helpers/helper-classes';
@@ -27,7 +27,7 @@ async function validationFields(lang) {
     const fieldValidations = new FieldValidations();
     return await fieldValidations.validationGenerator(fields, lang);
 }
-function Recovery({csrf, ...props}) {
+function Recovery({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
     const gReRef = useRef();
     const router = useRouter();
     const lang = useTranslation();
@@ -149,7 +149,7 @@ function Recovery({csrf, ...props}) {
         }
         appReqSent();
         return () => {
-            return ;
+            return;
         }
     }, [selectUser.resendEmail?.name]);
 
@@ -265,7 +265,7 @@ function Recovery({csrf, ...props}) {
 
                         <ReCAPTCHA
                             size="invisible"
-                            sitekey={process.env.RECAPTCHA_SITE_KEY}
+                            sitekey={RECAPTCHA_SITE_KEY}
                             // onChange={onChangeCaptch}
                             ref={gReRef}
                         />
@@ -307,7 +307,8 @@ function Recovery({csrf, ...props}) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['common', 'auth']))
+            ...(await serverSideTranslations(locale, ['common', 'auth'])),
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

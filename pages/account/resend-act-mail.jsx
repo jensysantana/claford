@@ -9,7 +9,7 @@ import { DataFormater } from '~/helpers/helper-classes';
 import ReCAPTCHA from "react-google-recaptcha";
 
 
-export default function OutToDate({ token }) {
+export default function OutToDate({ token, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const lang = useTranslation();
     const { t, i18n } = lang;
@@ -46,7 +46,7 @@ export default function OutToDate({ token }) {
 
                 pack.message = message;
                 pack.sbfIconClass = 'fa fa-exclamation-circle text-warning fa-5x d-block';
-                pack.messageClass='text-dark';
+                pack.messageClass = 'text-dark';
                 // encode pack before set to cookie
                 const newMessage = await dataFormater.encodeToBase64(await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(pack), useComponent: true })) || t('auth:text.20');
                 // set cookie
@@ -80,12 +80,12 @@ export default function OutToDate({ token }) {
                     default:
                         pack.message = t('auth:text.20');
                         break;
-                    }
-                    // encode pack before set to cookie
-                    const newMessage = await dataFormater.encodeToBase64(await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(pack), useComponent: true })) || t('auth:text.20');
-                    // set cookie
-                    setCookie('__UVACC__', newMessage, cookieOptions);
-                    router.replace('/account/feed-back');
+                }
+                // encode pack before set to cookie
+                const newMessage = await dataFormater.encodeToBase64(await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(pack), useComponent: true })) || t('auth:text.20');
+                // set cookie
+                setCookie('__UVACC__', newMessage, cookieOptions);
+                router.replace('/account/feed-back');
                 // navigate to show feed back
                 return;
             }
@@ -102,7 +102,7 @@ export default function OutToDate({ token }) {
         <>
             <ReCAPTCHA
                 size="invisible"
-                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                sitekey={RECAPTCHA_SITE_KEY}
                 // onChange={onChangeCaptch}
                 ref={gReRef}
             />
@@ -116,7 +116,8 @@ export async function getServerSideProps({ locale, query, ...rest }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['auth'])),
-            token: query?.token
+            token: query?.token,
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

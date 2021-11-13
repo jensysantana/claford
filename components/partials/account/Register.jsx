@@ -1,18 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux'
 import { Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
-import { userSignUpAction } from '~/store/user/action';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { FieldValidations } from '~/validations/authValidationFields';
 import { useTranslation } from 'react-i18next';
-import TypografyText from '../../elements/errors/TypografyText';
-import { DataFormater } from '~/helpers/helper-classes';
 import { useCookies } from 'react-cookie';
 import ReCAPTCHA from "react-google-recaptcha";
+import { userSignUpAction } from '~/store/user/action';
+import { FieldValidations } from '~/validations/authValidationFields';
+import TypografyText from '../../elements/errors/TypografyText';
+import { DataFormater } from '~/helpers/helper-classes';
 import ButtonWithLoadding from '~/components/elements/Button';
 import Logo from '~/components/elements/common/Logo';
 
@@ -50,7 +48,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-export default function Register({ csrf, ...props }) {
+export default function Register({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
     const gReRef = useRef();
     const router = useRouter();
     const lang = useTranslation();
@@ -95,6 +93,7 @@ export default function Register({ csrf, ...props }) {
             flag: false
         },
     });
+
     const [dBMessage, setDBMessage] = useState(() => {
         return {
             message: '',
@@ -241,6 +240,7 @@ export default function Register({ csrf, ...props }) {
         dispatch(userSignUpAction({ ...values, reCaptch: token, csrf }));
         setUserEmail(values.email);
     }
+
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     }
@@ -406,7 +406,7 @@ export default function Register({ csrf, ...props }) {
                             </div>
                             <ReCAPTCHA
                                 size="invisible"
-                                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                sitekey={RECAPTCHA_SITE_KEY}
                                 // onChange={onChangeCaptch}
                                 ref={gReRef}
                             />

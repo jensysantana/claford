@@ -7,6 +7,7 @@ export async function getServerSideProps({ locale, ...rest }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common', 'auth'])),
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

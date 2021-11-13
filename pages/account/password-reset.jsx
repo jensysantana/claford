@@ -35,7 +35,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-export default function PasswordReset({ csrf, token, otp }) {
+export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const lang = useTranslation();
     const { t, i18n } = lang;
@@ -338,7 +338,7 @@ export default function PasswordReset({ csrf, token, otp }) {
                             </div>
                             <ReCAPTCHA
                                 size="invisible"
-                                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                sitekey={RECAPTCHA_SITE_KEY}
                                 // onChange={onChangeCaptch}
                                 ref={gReRef}
                             />
@@ -396,7 +396,8 @@ export async function getServerSideProps({ locale, query, ...rest }) {
         props: {
             ...(await serverSideTranslations(locale, ['auth'])),
             token: query?.token || null,
-            otp: query?.otp || null
+            otp: query?.otp || null,
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

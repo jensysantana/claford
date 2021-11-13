@@ -20,9 +20,7 @@ async function validationFields(lang) {
     const fieldValidations = new FieldValidations();
     return await fieldValidations.validationGenerator(fields, lang);
 }
-console.log('///// 11111');
-console.log(process.env.RECAPTCHA_SITE_KEY);
-console.log('/////===222');
+
 export default function SignIn({ navigaTo, ...rest }) {
     const lang = useTranslation();
     const { t, i18n } = lang;

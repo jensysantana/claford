@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useCookies } from 'react-cookie';
+import ReCAPTCHA from "react-google-recaptcha";
 import Api from '../../../store/auth2/request/auth';
 import { DataFormater } from '~/helpers/helper-classes';
-import ReCAPTCHA from "react-google-recaptcha";
-export default function Validate({ csrfs, token, toApp }) {
+
+export default function Validate({ csrfs, token, toApp, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const lang = useTranslation();
     const { t, i18n } = lang;
@@ -157,7 +158,7 @@ export default function Validate({ csrfs, token, toApp }) {
         <>
             <ReCAPTCHA
                 size="invisible"
-                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                sitekey={RECAPTCHA_SITE_KEY}
                 // onChange={onChangeCaptch}
                 ref={gReRef}
             />
@@ -176,7 +177,8 @@ export async function getServerSideProps({ locale, query, ...rest }) {
             ...(await serverSideTranslations(locale, ['auth'])),
             token: query?.token,
             toApp: query?.to || null,
-            csrfs: rest.req.cookies['XSRF-TOKEN']
+            csrfs: rest.req.cookies['XSRF-TOKEN'],
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

@@ -31,7 +31,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-function Unafsb({csrf}) {
+function Unafsb({ csrf, RECAPTCHA_SITE_KEY }) {
     const gReRef = useRef();
     const [cookies, setCookie, removeCookie] = useCookies(['__recoveryUnafsb']);
     const router = useRouter();
@@ -214,7 +214,7 @@ function Unafsb({csrf}) {
         }
         sendOTP();
         return () => {
-            return ;
+            return;
         }
     }, [selectUser.resetPassFromOTP.name])
 
@@ -291,8 +291,8 @@ function Unafsb({csrf}) {
                         window.location.href = `/account/password-reset?otp=${newMessage}`
                         break;
                     case 'ValidationFeedBackError':
-                        
-                        if(status !== 500){
+
+                        if (status !== 500) {
                             navigateNext = false;
                             // setShowSendOTP(() => true);
                             setShowLoadding(() => false);
@@ -302,7 +302,7 @@ function Unafsb({csrf}) {
                                     hasError: true
                                 }
                             })
-                            return ;
+                            return;
                         }
 
                         pack.message = message;
@@ -358,7 +358,7 @@ function Unafsb({csrf}) {
         }
         confOTP();
         return () => {
-            return ;
+            return;
         }
     }, [selectUser.confOTPExists.name])
     // validate otp
@@ -459,7 +459,7 @@ function Unafsb({csrf}) {
 
                             <ReCAPTCHA
                                 size="invisible"
-                                sitekey={process.env.RECAPTCHA_SITE_KEY}
+                                sitekey={RECAPTCHA_SITE_KEY}
                                 // onChange={onChangeCaptch}
                                 ref={gReRef}
                             />
@@ -530,7 +530,8 @@ function Unafsb({csrf}) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['auth']))
+            ...(await serverSideTranslations(locale, ['auth'])),
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
         }, // will be passed to the page component as props
     }
 }

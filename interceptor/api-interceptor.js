@@ -28,9 +28,10 @@ const {
     authServer
 } = APP_CONFIG;
 // server.url
+const { clafordServer: { servUrl } } = process.env.SERVERS;
 
 const apiInterceptor = axios.create({
-    baseURL: server.url,
+    baseURL: servUrl,
     headers: headers,
     timeout: 20000,
     withCredentials: true

@@ -1,4 +1,4 @@
-// const { initReactI18next } = require("react-i18next");
+const { initReactI18next } = require("react-i18next");
 /*
 * Martfury - Multipurpose Marketplace React Ecommerce Template v2.2.0
 * Author: nouthemes
@@ -11,10 +11,7 @@
 const { i18n } = require('./next-i18next.config');
 // import en from './locales/en/translation.json';
 // import es from './locales/es/translation.json';
-console.log(' 111111 -----------------------process.env.NODE_ENV-------------------------');
-console.log(process.env.NODE_ENV)
-console.log(' 2222222 -----------------------process.env.NODE_ENV-------------------------');
-const apiUrl = process.env.NODE_ENV === 'development' ? `http://localhost:4300` : 'https://sidetransactions.claford.com';
+const apiUrl = process.env.NODE_ENV === 'development' ? `http://localhost:43980` : 'https://transactions.claford.com';
 const nextSettings = {
     optimizeFonts: false,
     // disable eslint
@@ -28,10 +25,6 @@ const nextSettings = {
         keyWords: 'claford, market, marketplace, store, sales, buy, purchace, raffle, auction, phone, laptop, tablet',
         // contactEmail: '',
         // RECAPTCHA_SITE_KEY: "",
-        apiServer: {
-            url: apiUrl,
-            assetsUrl: `${apiUrl}/assets`
-        },
         SERVERS: {
             frontApp: {
                 url: process.env.NODE_ENV === 'development' ? `http://localhost:3005` : 'https://claford.com',
@@ -39,10 +32,19 @@ const nextSettings = {
             authServer: {
                 servUrl: process.env.NODE_ENV === 'development' ? `http://10.0.0.64:43284` : 'https://authserver.claford.com',
                 apiBase: '/api/v1',
+                // assetsUrl: `${apiUrl}/assets`,
                 headers: {
 
                 }
-            }
+            },
+            clafordServer: {
+                servUrl: apiUrl,
+                apiBase: '/api/v1',
+                assetsUrl: `${apiUrl}/assets`,
+                headers: {
+
+                }
+            },
         }
         // apiImgUrlBase: process.env.NODE_ENV === 'development' ? ''
     },
@@ -51,7 +53,7 @@ const nextSettings = {
     //     // These are all the locales you want to support in
     //     // your application
     //     locales: ['en', 'es', 'fr'],
-    //     // initReactI18next: initReactI18next,
+    initReactI18next: initReactI18next,
     //     // locales:Languages,
     //     // This is the default locale you want to be used when visiting
     //     // a non-locale prefixed path e.g. `/hello`

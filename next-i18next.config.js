@@ -22,5 +22,10 @@ module.exports = {
         locales: Languages,
         defaultLocale: 'en',
     },
+    // fallbackLng: 'en',
+    // debug: false,
+    // react: {
+    //     wait: true
+    // },
 };
 
