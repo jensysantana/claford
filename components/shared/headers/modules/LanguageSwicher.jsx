@@ -5,6 +5,7 @@ import Image from 'next/image'
 import langers from '../../../../data/langs';
 import { setUserLangRequest } from '~/store/setting/action';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 
 function langProccess(langs, getLangs) {
@@ -28,9 +29,18 @@ function LanguageSwicher() {
 
     const [state, setState] = useState([...langsApp])
     // 18n.changeLanguage('en')
+    const router = useRouter();
+
+    console.log('router++++++', router);
+    console.log('///window.location.', window.location);
+    console.log('///window.location.', window.location.origin);
     function handleFeatureWillUpdated(e, data) {
         e.preventDefault();
         console.log('////AAAA...', data);
+        const { origin, pathname } = window.location;
+        window.location.replace(`${origin}/${data.code}${pathname}`)
+
+
         // notification.open({
         //     message: 'Opp! Something went wrong.',
         //     description: 'This feature has been updated later!',
@@ -40,7 +50,7 @@ function LanguageSwicher() {
         // i18n.changeLanguage(data.code, function (params) {
         //     console.log(params);
         // });
-        i18n.changeLanguage('en');
+        // i18n.changeLanguage('es');
 
 
     }

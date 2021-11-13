@@ -12,20 +12,24 @@ const resources = {
 };
 
 const Languages = [
+    'default',
     'es',
     'en',
     'fr'
 ];
-module.exports = {
+const internatinalized = {
     i18n: {
         // resources,
         locales: Languages,
         defaultLocale: 'en',
+        localeDetection: false,
     },
     // fallbackLng: 'en',
     // debug: false,
     // react: {
     //     wait: true
     // },
+    trailingSlash: true,
 };
+module.exports = internatinalized
 
