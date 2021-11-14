@@ -1,6 +1,6 @@
 import { all, put, takeEvery, takeLatest, call } from 'redux-saga/effects';
-import { actionTypes, changeCurrencySuccess, setUserLangSuccess } from './action';
-import Api from './request/settings';
+import { actionTypes, changeCurrencySuccess, setUserLangSuccess } from './action.js';
+import Api from './request/settings.js';
 
 function* changeCurrencySaga({ currency }) {
     try {

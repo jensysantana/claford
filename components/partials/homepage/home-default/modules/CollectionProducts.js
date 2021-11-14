@@ -1,6 +1,6 @@
 import React from 'react';
-import { carouselFullwidth } from '../../../../../utilities/carousel-helpers';
-import Product from '../../../../elements/products/Product';
+import { carouselFullwidth } from '../../../../../utilities/carousel-helpers.js';
+import Product from '../../../../elements/products/Product.jsx';
 import Slider from 'react-slick';
 
 const CollectionProducts = ({ products }) => (

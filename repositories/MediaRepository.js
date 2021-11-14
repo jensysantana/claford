@@ -1,5 +1,5 @@
-import Repository, { baseUrl } from './Repository';
-import { convertSlugsQueryString } from '../utilities/product-helper';
+import Repository, { baseUrl } from './Repository.js';
+import { convertSlugsQueryString } from '../utilities/product-helper.js';
 
 class MediaRespository {
     async getBannersBySlugs(payload) {

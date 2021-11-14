@@ -1,4 +1,4 @@
-import Repository, { baseUrl } from './Repository';
+import Repository, { baseUrl } from './Repository.js';
 
 class CollectionRepository {
     async getCollections(payload) {

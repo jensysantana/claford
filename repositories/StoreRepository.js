@@ -1,4 +1,4 @@
-import Repository, { baseStoreURL, serializeQuery } from './Repository';
+import Repository, { baseStoreURL, serializeQuery } from './Repository.js';
 
 class StoreRepository {
     constructor(callback) {

@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { APP_CONFIG } from "../config/config";
-import GlobalHelper from "../helpers/global-helper";
+import { APP_CONFIG } from "../config/config.js";
+import GlobalHelper from "../helpers/global-helper.js";
 // import { CookiesHelper } from '../helpers/helper-classes';
-import apiToken from '../store/services/api-refresh-token';
+import apiToken from '../store/services/api-refresh-token.js';
 // import apiToken from '../store/services/api-auth';
 
 const gbHelper = new GlobalHelper();

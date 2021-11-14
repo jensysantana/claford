@@ -1,5 +1,5 @@
 // import { handleActions } from 'redux-actions';
-import { actionTypes } from './action';
+import { actionTypes } from './action.js';
 
 export const initState = {
     userSignUp: false,

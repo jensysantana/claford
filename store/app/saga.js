@@ -1,6 +1,6 @@
 import { all, put, takeEvery } from 'redux-saga/effects';
 
-import { actionTypes, switchDemoPanelSuccess } from './action';
+import { actionTypes, switchDemoPanelSuccess } from './action.js';
 
 function* switchDemoPanel({ payload }) {
     try {
