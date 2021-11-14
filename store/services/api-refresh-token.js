@@ -1,4 +1,4 @@
-import apiInterceptor from '../../interceptor/api-interceptor'
+import apiInterceptor from '../../interceptor/api-interceptor.js'
 const TOKEN_API = {
 
     post: (data, isLocaStorageToken = false) => apiInterceptor({

@@ -1,5 +1,5 @@
 import { all, put, takeEvery } from 'redux-saga/effects';
-import { actionTypes } from './action';
+import { actionTypes } from './action.js';
 
 import {
     updateCartSuccess,
@@ -7,7 +7,7 @@ import {
     setCartItemsSuccess,
     setWishlistTtemsSuccess,
     setCompareItemsSuccess,
-} from './action';
+} from './action.js';
 
 // new
 function* getWishlistItems({ payload }) {

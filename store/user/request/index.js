@@ -1,5 +1,5 @@
-import apiInterceptor from '../../../interceptor/api-interceptor';
-import { APP_CONFIG } from "../../../config/config";
+import apiInterceptor from '../../../interceptor/api-interceptor.js';
+import { APP_CONFIG } from "../../../config/config.js";
 const { authServer: { apiBase, servUrl } } = APP_CONFIG;
 
 export default {

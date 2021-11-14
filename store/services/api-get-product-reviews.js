@@ -1,4 +1,4 @@
-import apiInterceptor from '../../interceptor/api-interceptor';
+import apiInterceptor from '../../interceptor/api-interceptor.js';
 
 const PRODUCT_REVIEW_API = {
     prodReviews: {

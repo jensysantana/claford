@@ -1,6 +1,6 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { actionTypes, getCategoriesFailed, getCategoriesSuccess } from './action';
-import Api from './request/categories';
+import { actionTypes, getCategoriesFailed, getCategoriesSuccess } from './action.js';
+import Api from './request/categories.js';
 
 function* getCategories(payload) {
 

@@ -1,4 +1,4 @@
-import apiInterceptor from '../../interceptor/api-interceptor'
+import apiInterceptor from '../../interceptor/api-interceptor.js'
 const PRODUCTS_API = {
 
     products: {

@@ -1,4 +1,4 @@
-import Repository, { baseUrl, serializeQuery } from './Repository';
+import Repository, { baseUrl, serializeQuery } from './Repository.js';
 
 class ProductRepository {
     async getRecords(params) {

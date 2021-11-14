@@ -7,8 +7,8 @@ import {
     passwordResetActionSuccess,
     passwordResetFromOTPActionSuccess,
     confirmOTPExistsActionSuccess
-} from './action';
-import Api from './request/auth';
+} from './action.js';
+import Api from './request/auth.js';
 
 function* loginSaga({ payload }) {
 

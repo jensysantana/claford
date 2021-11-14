@@ -1,4 +1,4 @@
-import apiInterceptor from '../../../interceptor/api-interceptor';
+import apiInterceptor from '../../../interceptor/api-interceptor.js';
 const { clafordServer: { apiBase } } = process.env.SERVERS;
 
 export default {

@@ -6,12 +6,12 @@ import { combineReducers } from 'redux';
 // import app from './app/reducer';
 // import ecomerce from './ecomerce/reducer';
 // import auth from './auth/reducer';
-import { signIn } from './auth2/reducer';
-import setting, { settings } from './setting/reducer';
-import app from './app/reducer';
-import ecomerce from './ecomerce/reducer';
-import user from './user/reducer';
-import { CATEGORIES } from './categories/reducer';
+import { signIn } from './auth2/reducer.js';
+import setting, { settings } from './setting/reducer.js';
+import app from './app/reducer.js';
+import ecomerce from './ecomerce/reducer.js';
+import user from './user/reducer.js';
+import { CATEGORIES } from './categories/reducer.js';
 const isClient = typeof window !== "undefined";
 const rootPersistConfig = {
     key: 'root',
