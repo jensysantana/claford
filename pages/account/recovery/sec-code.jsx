@@ -120,7 +120,7 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
             email: userEmail,
             reCaptch: token,
             csrf,
-            lang: appLang
+            lang: appLang.lang
         }));
     }
 
@@ -241,7 +241,7 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
             email: userEmail,
             reCaptch: tokenReCap,
             csrf,
-            lang: appLang
+            lang: appLang.lang
         }))
     }
 

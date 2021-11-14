@@ -110,7 +110,7 @@ export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) 
                 token: token,
                 isToken: true,
                 csrf,
-                lang: appLang
+                lang: appLang.lang
             }));
 
         }
@@ -127,7 +127,7 @@ export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) 
                 securityCode,
                 isToken: false,
                 csrf,
-                lang: appLang
+                lang: appLang.lang
             }));
 
         }

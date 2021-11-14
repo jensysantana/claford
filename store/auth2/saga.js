@@ -11,7 +11,9 @@ import {
 import Api from './request/auth';
 
 function* loginSaga({ payload }) {
+
     try {
+        // const {  } = payload;
         const apiResp = yield call(Api.AUTH.signIn, payload);
         const { data, status } = apiResp;
         yield put(loginSuccess({
@@ -24,6 +26,9 @@ function* loginSaga({ payload }) {
 }
 function* startRecoveryAccountSaga({ payload }) {
     try {
+        console.log(' 111111 -----------------------login())))))))-------------------------');
+        console.log(payload)
+        console.log(' 2222222 -----------------------login())))))))-------------------------');
         const apiResp = yield call(Api.AUTH.startAccountRecovery, payload);
         const { data, status } = apiResp;
         yield put(startRecoveryAccountSuccess({

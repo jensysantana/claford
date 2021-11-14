@@ -97,7 +97,7 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
         })
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
-        dispatch(sendMailRecoveryAccountFromEmailAction({ email: userEmail, reCaptch: token, csrf, lang: appLang }));
+        dispatch(sendMailRecoveryAccountFromEmailAction({ email: userEmail, reCaptch: token, csrf, lang: appLang.lang }));
     }
     useEffect(() => {
         async function sendEmail() {
@@ -204,7 +204,7 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
             email: userEmail,
             reCaptch: token,
             csrf,
-            lang: appLang
+            lang: appLang.lang
         }));
     }
 

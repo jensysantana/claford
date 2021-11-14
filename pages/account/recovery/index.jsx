@@ -182,7 +182,7 @@ function Recovery({ csrf, RECAPTCHA_SITE_KEY, appLang, ...props }) {
         gReRef.current.reset();
         setShowLoadding(() => true);
         setUserEmail(values.email);
-        dispatch(sendMailRecoveryAccountFromEmailAction({ email: values.email, reCaptch: token, csrf, lang: appLang }));
+        dispatch(sendMailRecoveryAccountFromEmailAction({ email: values.email, reCaptch: token, csrf, lang: appLang.lang }));
         return;
 
     }

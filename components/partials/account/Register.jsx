@@ -48,7 +48,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-export default function Register({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
+export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }) {
     const gReRef = useRef();
     const router = useRouter();
     const lang = useTranslation();
@@ -237,7 +237,7 @@ export default function Register({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
 
-        dispatch(userSignUpAction({ ...values, reCaptch: token, csrf, lang: appLang }));
+        dispatch(userSignUpAction({ ...values, reCaptch: token, csrf, lang: appLang.lang }));
         setUserEmail(values.email);
     }
 

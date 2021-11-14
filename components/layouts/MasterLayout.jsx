@@ -21,8 +21,6 @@ const MasterLayout = ({ children }) => {
         }
     })
 
-
-
     function initEcomerceValues() {
         if (cookies) {
             if (cookies.cart) {
@@ -49,7 +47,7 @@ const MasterLayout = ({ children }) => {
                 // subItem: 'Del'
                 reCaptch: 'capToken',
                 csrf: null,
-                lang: setUserLang
+                lang: setUserLang.lang
             }));
         }
         initer();

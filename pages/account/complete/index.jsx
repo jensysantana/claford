@@ -164,7 +164,7 @@ function Complete({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
             email: state.email,
             reCaptch: token,
             csrf,
-            lang: appLang
+            lang: appLang.lang
         }));
         setCounter(counter + 1);
     }

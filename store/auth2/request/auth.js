@@ -12,7 +12,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         activateAcc: ({ csrf, token, reCaptch, lang, ...rest }) => apiInterceptor({
@@ -26,7 +26,7 @@ export default {
                 'Content-Type': 'application/json',
                 'Authorization': token,
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         resendEmailActivationFromToken: ({ csrf, token, lang, reCaptch }) => apiInterceptor({
@@ -40,7 +40,7 @@ export default {
                 'Content-Type': 'application/json',
                 'Authorization': token,
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         signIn: ({ csrf, lang, ...rest }) => apiInterceptor({
@@ -51,7 +51,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         startAccountRecovery: ({ csrf, lang, ...rest }) => apiInterceptor({
@@ -62,7 +62,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         resetPassFromToken: ({ payload: { csrf, lang, token, ...rest } }) => apiInterceptor({
@@ -74,7 +74,7 @@ export default {
                 'Content-Type': 'application/json',
                 'Authorization': token,
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         setNewPassFromOTP: ({ payload: { isToken, csrf, lang, ...rest } }) => apiInterceptor({
@@ -85,7 +85,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
 
         }),
@@ -97,7 +97,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
         confirmOTPExists: ({ payload: { csrf, lang, ...rest } }) => apiInterceptor({
@@ -108,7 +108,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": lang.lang
+                "Accept-Language": lang.code
             },
         }),
 

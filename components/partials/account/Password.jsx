@@ -164,7 +164,7 @@ export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY, appLang }
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
         setShowLoadding(() => true);
-        dispatch(login({ ...userData, ...values, reCaptch: token, csrf, lang: appLang }));
+        dispatch(login({ ...userData, ...values, reCaptch: token, csrf, lang: appLang.lang }));
     }
 
     const onFinishFailed = (errorInfo) => {
@@ -192,7 +192,7 @@ export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY, appLang }
         setShowLoaddingRec(() => true);
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
-        dispatch(startRecoveryAccountAction({ email: userData.email, reCaptch: token, csrf, lang: appLang }));
+        dispatch(startRecoveryAccountAction({ email: userData.email, reCaptch: token, csrf, lang: appLang.lang }));
     }
     useEffect(() => {
         // recovery account
