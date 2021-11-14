@@ -3,105 +3,17 @@ const { clafordServer: { apiBase } } = process.env.SERVERS;
 
 export default {
     CATEGORY: {
-        getCategories: ({ csrf, ...rest }) => apiInterceptor({
+        getCategories: ({ csrf, lang, ...rest }) => apiInterceptor({
             // baseURL: servUrl,
             url: `${apiBase}/category`,
-            data: rest,
+            // data: rest,
             method: 'get',
-            // headers: {
-            //     'Content-Type': 'application/json',
-            //     'csrf-token': csrf
-            // },
-        }),
-        activateAcc: ({ csrf, token, reCaptch, ...rest }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/activate-account-from-token`,
-            data: {
-                reCaptch
-            },
-            method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token,
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": 'en'
             },
         }),
-        resendEmailActivationFromToken: ({ csrf, token, reCaptch }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/resend-mail-to-activate-account-from-token`,
-            data: {
-                reCaptch
-            },
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token,
-                'csrf-token': csrf
-            },
-        }),
-        signIn: ({ csrf, ...rest }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'csrf-token': csrf
-            },
-        }),
-        startAccountRecovery: ({ csrf, ...rest }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/start-recovery-account`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'csrf-token': csrf
-            },
-        }),
-        resetPassFromToken: ({ payload: { csrf, token, ...rest } }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/reset-password-from-token`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token,
-                'csrf-token': csrf
-            },
-        }),
-        setNewPassFromOTP: ({ payload: { isToken, csrf, ...rest } }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/set-password-from-otp`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'csrf-token': csrf
-            },
-
-        }),
-        resetPassFromOTP: ({ payload: { csrf, ...rest } }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/get-reset-password-from-otp`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'csrf-token': csrf
-            },
-        }),
-        confirmOTPExists: ({ payload: { csrf, ...rest } }) => apiInterceptor({
-            // baseURL: servUrl,
-            url: `${apiBase}/auth/get-confirm-otp-exists`,
-            data: rest,
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'csrf-token': csrf
-            },
-        }),
-
     }
 }
 

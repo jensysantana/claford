@@ -3,6 +3,7 @@ import Head from 'next/head';
 import HeaderDefault from '~/components/shared/headers/HeaderDefault';
 import HeaderMobile from '~/components/shared/headers/HeaderMobile';
 import FooterFullwidth from '~/components/shared/footers/FooterFullwidth';
+import { useTranslation } from 'react-i18next';
 
 const initHeaders = (
     <>

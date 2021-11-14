@@ -21,7 +21,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-export default function SignIn({ navigaTo, ...rest }) {
+export default function SignIn({ navigaTo, appLang, ...rest }) {
     const lang = useTranslation();
     const { t, i18n } = lang;
     const router = useRouter();

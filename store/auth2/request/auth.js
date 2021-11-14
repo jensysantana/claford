@@ -4,17 +4,18 @@ import apiInterceptor from '../../../interceptor/api-interceptor';
 const { authServer } = process.env.SERVERS;
 export default {
     AUTH: {
-        sendMailToRecoverAccFromEmail: ({ csrf, ...rest }) => apiInterceptor({
+        sendMailToRecoverAccFromEmail: ({ csrf, lang, ...rest }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/resend-mail-to-activate-account-from-email`,
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        activateAcc: ({ csrf, token, reCaptch, ...rest }) => apiInterceptor({
+        activateAcc: ({ csrf, token, reCaptch, lang, ...rest }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/activate-account-from-token`,
             data: {
@@ -24,10 +25,11 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token,
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        resendEmailActivationFromToken: ({ csrf, token, reCaptch }) => apiInterceptor({
+        resendEmailActivationFromToken: ({ csrf, token, lang, reCaptch }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/resend-mail-to-activate-account-from-token`,
             data: {
@@ -37,30 +39,33 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token,
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        signIn: ({ csrf, ...rest }) => apiInterceptor({
+        signIn: ({ csrf, lang, ...rest }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth`,
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        startAccountRecovery: ({ csrf, ...rest }) => apiInterceptor({
+        startAccountRecovery: ({ csrf, lang, ...rest }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/start-recovery-account`,
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        resetPassFromToken: ({ payload: { csrf, token, ...rest } }) => apiInterceptor({
+        resetPassFromToken: ({ payload: { csrf, lang, token, ...rest } }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/reset-password-from-token`,
             data: rest,
@@ -68,38 +73,42 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token,
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        setNewPassFromOTP: ({ payload: { isToken, csrf, ...rest } }) => apiInterceptor({
+        setNewPassFromOTP: ({ payload: { isToken, csrf, lang, ...rest } }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/set-password-from-otp`,
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
 
         }),
-        resetPassFromOTP: ({ payload: { csrf, ...rest } }) => apiInterceptor({
+        resetPassFromOTP: ({ payload: { csrf, lang, ...rest } }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/get-otp-account-recovery`, ///get-reset-password-from-otp
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
-        confirmOTPExists: ({ payload: { csrf, ...rest } }) => apiInterceptor({
+        confirmOTPExists: ({ payload: { csrf, lang, ...rest } }) => apiInterceptor({
             baseURL: authServer.servUrl,
             url: `${authServer.apiBase}/auth/get-confirm-otp-exists`,
             data: rest,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'csrf-token': csrf
+                'csrf-token': csrf,
+                "Accept-Language": lang.lang
             },
         }),
 

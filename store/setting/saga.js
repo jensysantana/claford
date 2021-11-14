@@ -9,25 +9,48 @@ function* changeCurrencySaga({ currency }) {
         console.error(err);
     }
 }
-function* setUserLang (payload) {
 
+function* setUserLang(payload) {
+    console.log(' 111111 --------------setUserLang---------payload-------------------------');
+    console.log(payload)
+    console.log(' 2222222 -----------setUserLang------------payload-------------------------');
     try {
-        const apiResp = yield call(Api.SETTINGS.setUserLang, payload);
+        const apiResp = yield call(Api.SETTINGS.setUserLang, payload.lang.code);
         const { data, status } = apiResp;
 
         yield put(setUserLangSuccess({
             ...data,
-            status
+            status,
+            lang: payload.lang
         }));
-        
+
     } catch (error) {
-        console.log(' 111111 -----------------------error-------------------------');
-        console.log(error)
-        console.log(' 2222222 -----------------------error-------------------------');
-        yield put({ type: actionTypes.SET_USER_LANG_FAILED, ...error.response });
+        yield put({ type: actionTypes.SET_USER_LANG_FAILED, ...error.response, lang: payload.lang });
     }
-    
+
 }
+// function* setUserLang(payload) {
+//     // console.log(' 111111 -----------------------setUserLang(payload)-------------------------');
+//     // console.log(payload)
+//     // console.log(' 2222222 -----------------------setUserLang(payload)-------------------------');
+//     try {
+//         const apiResp = yield call(Api.SETTINGS.setUserLang, payload.code);
+//         const { data, status } = apiResp;
+//         yield put(setUserLangSuccess({
+//             ...data,
+//             status
+//         }));
+
+//         // yield put(setUserLangSuccess(payload));
+
+//     } catch (err) {
+//         console.log(' 111111 -----------------------error-------------------------');
+//         console.log(err)
+//         console.log(' 2222222 -----------------------error-------------------------');
+//         yield put({ type: actionTypes.SET_USER_LANG_FAILED, ...err });
+//     }
+
+// }
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.CHANGE_CURRENCY, changeCurrencySaga)]);
     yield all([takeLatest(actionTypes.SET_USER_LANG_REQUEST, setUserLang)]);

@@ -9,12 +9,10 @@ const { initReactI18next } = require("react-i18next");
 // initReactI18next
 
 const { i18n } = require('./next-i18next.config');
-console.log(' 111111 -----------------------i18n-------------------------');
-console.log(i18n)
-console.log(' 2222222 -----------------------i18n-------------------------');
 // import en from './locales/en/translation.json';
 // import es from './locales/es/translation.json';
 const apiUrl = process.env.NODE_ENV === 'development' ? `http://localhost:43980` : 'https://transactions.claford.com';
+const clafordServerUrl = process.env.NODE_ENV === 'development' ? `http://localhost:43285` : 'https://transactions.claford.com';
 const nextSettings = {
     optimizeFonts: false,
     // disable eslint
@@ -41,9 +39,9 @@ const nextSettings = {
                 }
             },
             clafordServer: {
-                servUrl: apiUrl,
+                servUrl: process.env.NODE_ENV === 'development' ? `http://localhost:43285` : 'https://transactions.claford.com',
                 apiBase: '/api/v1',
-                assetsUrl: `${apiUrl}/assets`,
+                assetsUrl: `${clafordServerUrl}/assets`,
                 headers: {
 
                 }

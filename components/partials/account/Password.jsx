@@ -29,7 +29,7 @@ async function validationFields(lang) {
 <p className="mt-3">Enter the email address associated with your {value.client.appName} account.</p>
 */
 
-export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY }) {
+export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY, appLang }) {
 
     const router = useRouter();
     const lang = useTranslation();
@@ -164,7 +164,7 @@ export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY }) {
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
         setShowLoadding(() => true);
-        dispatch(login({ ...userData, ...values, reCaptch: token, csrf }));
+        dispatch(login({ ...userData, ...values, reCaptch: token, csrf, lang: appLang }));
     }
 
     const onFinishFailed = (errorInfo) => {
@@ -192,7 +192,7 @@ export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY }) {
         setShowLoaddingRec(() => true);
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
-        dispatch(startRecoveryAccountAction({ email: userData.email, reCaptch: token, csrf }));
+        dispatch(startRecoveryAccountAction({ email: userData.email, reCaptch: token, csrf, lang: appLang }));
     }
     useEffect(() => {
         // recovery account

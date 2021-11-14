@@ -11,7 +11,8 @@ import setting, { settings } from './setting/reducer';
 import app from './app/reducer';
 import ecomerce from './ecomerce/reducer';
 import user from './user/reducer';
-
+import { CATEGORIES } from './categories/reducer';
+const isClient = typeof window !== "undefined";
 const rootPersistConfig = {
     key: 'root',
     storage,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
     resetPasswordFromOTP: signIn.resetPasswordFromOTP,
     confOTPExists: signIn.confOTPExists,
     setUserLang: settings.setUserLang,
+    category: CATEGORIES.category,
     setting,
     app,
     ecomerce,

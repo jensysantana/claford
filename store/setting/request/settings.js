@@ -1,14 +1,15 @@
 import apiInterceptor from '../../../interceptor/api-interceptor';
-import { APP_CONFIG } from "../../../config/config";
-const { server: { apiBase }, authServer } = APP_CONFIG;
+const { clafordServer } = process.env.SERVERS;
+const { apiBase, servUrl } = clafordServer;
 
 export default {
     SETTINGS: {
         setUserLang: (data) => apiInterceptor({
-            baseURL: authServer.servUrl,
+            // baseURL: servUrl,
             url: `/set-user-lang`,
-            data,
-            method: 'post'
+            data: {},
+            method: 'post',
+            "Accept-Language": data.code
         }),
         // activateAcc: ({ token, reCaptch }) => apiInterceptor({
         //     baseURL: authServer.servUrl,

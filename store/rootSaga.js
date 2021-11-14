@@ -5,7 +5,14 @@ import AuthSaga from './auth2/saga';
 import App from './app/saga';
 import Ecomerce from './ecomerce/saga';
 import UserSaga from './user/saga';
-
+import CategorySaga from './categories/sagas';
 export default function* rootSaga() {
-    yield all([SettingSaga(), AuthSaga(), App(), Ecomerce(), UserSaga()]);
+    yield all([
+        SettingSaga(),
+        AuthSaga(),
+        App(),
+        Ecomerce(),
+        UserSaga(),
+        CategorySaga()
+    ]);
 }

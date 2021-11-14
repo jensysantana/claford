@@ -24,6 +24,7 @@ import '~/scss/autopart.scss';
 import '~/scss/electronic.scss';
 
 import { appWithTranslation } from 'next-i18next';
+import { useSelector } from 'react-redux';
 
 function App({ Component, pageProps }) {
     useEffect(() => {
@@ -45,13 +46,17 @@ function App({ Component, pageProps }) {
             return false;
         }
     }, []);
-
+    const { setUserLang } = useSelector(st => {
+        return {
+            ...st
+        }
+    })
     return (
         <CookiesProvider>
             <MasterLayout>
                 {/* <Component {...pageProps} /> */}
                 <PersistGate loading={<p style={{ textAlign: 'center' }}>Loading...</p>} persistor={storePersistor.persistor}>
-                    <Component {...pageProps} csrf={state} />
+                    <Component {...pageProps} csrf={state} appLang={setUserLang} />
                 </PersistGate>
             </MasterLayout>
         </CookiesProvider>

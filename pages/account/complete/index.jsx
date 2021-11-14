@@ -13,7 +13,7 @@ import { DataFormater } from '~/helpers/helper-classes';
 import { resendActivationAccountActionClean, sendMailRecoveryAccountFromEmailAction } from '~/store/auth2/action';
 import ReCAPTCHA from "react-google-recaptcha";
 
-function Complete({ csrf, RECAPTCHA_SITE_KEY }) {
+function Complete({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
     const gReRef = useRef();
     const router = useRouter();
     const dispatch = useDispatch();
@@ -163,7 +163,8 @@ function Complete({ csrf, RECAPTCHA_SITE_KEY }) {
         dispatch(sendMailRecoveryAccountFromEmailAction({
             email: state.email,
             reCaptch: token,
-            csrf
+            csrf,
+            lang: appLang
         }));
         setCounter(counter + 1);
     }

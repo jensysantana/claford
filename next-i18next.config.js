@@ -12,7 +12,7 @@ const resources = {
 };
 
 const Languages = [
-    'default',
+    // 'default',
     'es',
     'en',
     'fr'

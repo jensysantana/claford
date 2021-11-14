@@ -237,7 +237,7 @@ export default function Register({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
         const token = await gReRef.current.executeAsync();
         gReRef.current.reset();
 
-        dispatch(userSignUpAction({ ...values, reCaptch: token, csrf }));
+        dispatch(userSignUpAction({ ...values, reCaptch: token, csrf, lang: appLang }));
         setUserEmail(values.email);
     }
 

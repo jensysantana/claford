@@ -109,7 +109,8 @@ export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) 
                 reCaptch: tokenReCap,
                 token: token,
                 isToken: true,
-                csrf
+                csrf,
+                lang: appLang
             }));
 
         }
@@ -125,7 +126,8 @@ export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) 
                 email,
                 securityCode,
                 isToken: false,
-                csrf
+                csrf,
+                lang: appLang
             }));
 
         }
@@ -390,7 +392,7 @@ export default function PasswordReset({ csrf, token, otp, RECAPTCHA_SITE_KEY }) 
     );
 }
 
-export async function getServerSideProps({ locale, query, ...rest }) {
+export async function getServerSideProps({ locale, appLang, query, ...rest }) {
     // console.log('rest: ', rest);
     return {
         props: {

@@ -12,28 +12,15 @@ function* getCategories(payload) {
             ...data
         }));
     } catch (err) {
-        console.log(' 111111 -----------------------error-------------------------');
-        console.log(err)
-        console.log(' 2222222 -----------------------error-------------------------');
+        console.log(' 111111 ----------getCategories-------------error-------------------------');
+        console.log(err.response)
+        console.log(' 2222222 --------getCategories---------------error-------------------------');
         yield put({
             type: actionTypes.CATEGORIES_FAILED, ...err.response
         })
         // yield put(getCategoriesFailed({
         //     type: actionTypes.CATEGORIES_FAILED, ...err.response
         // }));
-    }
-}
-
-function* loginSaga({ payload }) {
-    try {
-        const apiResp = yield call(Api.AUTH.signIn, payload);
-        const { data, status } = apiResp;
-        yield put(loginSuccess({
-            ...data,
-            status
-        }));
-    } catch (err) {
-        yield put({ type: actionTypes.LOGIN_FAILED, ...err });
     }
 }
 

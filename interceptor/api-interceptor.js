@@ -23,10 +23,6 @@ let headers = {
 };
 // if (xsrfToken) headers = { ...headers, 'XSRF-TOKEN': xsrfToken };
 
-const {
-    server,
-    authServer
-} = APP_CONFIG;
 // server.url
 const { clafordServer: { servUrl } } = process.env.SERVERS;
 

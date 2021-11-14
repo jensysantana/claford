@@ -31,7 +31,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-function Unafsb({ csrf, RECAPTCHA_SITE_KEY }) {
+function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang }) {
     const gReRef = useRef();
     const [cookies, setCookie, removeCookie] = useCookies(['__recoveryUnafsb']);
     const router = useRouter();
@@ -119,7 +119,8 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY }) {
         dispatch(passwordResetFromOTPAction({
             email: userEmail,
             reCaptch: token,
-            csrf
+            csrf,
+            lang: appLang
         }));
     }
 
@@ -239,7 +240,8 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY }) {
             ...values,
             email: userEmail,
             reCaptch: tokenReCap,
-            csrf
+            csrf,
+            lang: appLang
         }))
     }
 

@@ -7,7 +7,12 @@ export const initialState = {
         text: 'USD',
     },
 };
-
+export const initialLang = {
+    code: 'en',
+    id: 'afsdf103601',
+    flagImg: 'en.png',
+    name: 'English'
+}
 function reducer(state = initialState, action) {
     switch (action.type) {
         case actionTypes.CHANGE_CURRENCY_SUCCESS:
@@ -23,11 +28,14 @@ function reducer(state = initialState, action) {
 export const settings = {
     setUserLang: handleActions({
         [actionTypes.SET_USER_LANG_SUCCESS]: (state, payload) => {
-            console.log(' 111111 -----------------------payload-------------------------');
+            console.log(' 111111 -----------SET_USER_LANG_SUCCESS------------payload-------------------------');
             console.log(payload)
-            console.log(' 2222222 -----------------------payload-------------------------');
-            const { fields, message, name, status } = payload;
+            console.log(state)
+            console.log(' 2222222 ----------SET_USER_LANG_SUCCESS-------------payload-------------------------');
+            const { fields, message, name, status, lang } = payload;
             return {
+                ...state,
+                lang: lang,
                 hasError: false,
                 fields,
                 message,
@@ -35,12 +43,9 @@ export const settings = {
                 status,
             }
         },
-        [actionTypes.SET_USER_LANG_FAILED]: (state, { status, data }) => {
-
-            console.log(' 111111 ----------------------- { status, data }-------------------------');
-            console.log( { status, data })
-            console.log(' 2222222 ----------------------- { status, data }-------------------------');
+        [actionTypes.SET_USER_LANG_FAILED]: (state, { status, data, lang }) => {
             return {
+                lang: lang,
                 ...data,
                 status,
                 user: null,
@@ -49,7 +54,8 @@ export const settings = {
         },
     }, {
         hasError: false,
-        message: ''
+        message: '',
+        lang: initialLang,
     }),
 
 }

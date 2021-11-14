@@ -27,7 +27,7 @@ async function validationFields(lang) {
     const fieldValidations = new FieldValidations();
     return await fieldValidations.validationGenerator(fields, lang);
 }
-function Recovery({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
+function Recovery({ csrf, RECAPTCHA_SITE_KEY, appLang, ...props }) {
     const gReRef = useRef();
     const router = useRouter();
     const lang = useTranslation();
@@ -182,7 +182,7 @@ function Recovery({ csrf, RECAPTCHA_SITE_KEY, ...props }) {
         gReRef.current.reset();
         setShowLoadding(() => true);
         setUserEmail(values.email);
-        dispatch(sendMailRecoveryAccountFromEmailAction({ email: values.email, reCaptch: token, csrf }));
+        dispatch(sendMailRecoveryAccountFromEmailAction({ email: values.email, reCaptch: token, csrf, lang: appLang }));
         return;
 
     }

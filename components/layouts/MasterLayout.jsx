@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BackTop } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import {
     setCartItems,
@@ -10,10 +10,18 @@ import {
 import PageLoader from '~/components/elements/common/PageLoader';
 import NavigationList from '~/components/shared/navigation/NavigationList';
 import MainHead from '~/components/layouts/modules/MainHead';
+import { getCategories } from '~/store/categories/action';
 
 const MasterLayout = ({ children }) => {
     const dispatch = useDispatch();
     const [cookies] = useCookies(['cart', 'compare', 'wishlist']);
+    const { setUserLang } = useSelector(st => {
+        return {
+            setUserLang: st.setUserLang,
+        }
+    })
+
+
 
     function initEcomerceValues() {
         if (cookies) {
@@ -31,6 +39,20 @@ const MasterLayout = ({ children }) => {
 
     useEffect(() => {
         initEcomerceValues();
+    }, []);
+
+    useEffect(() => {
+        function initer() {
+            dispatch(getCategories({
+                // category:'Electronic',
+                // subCategory:'Laptop',
+                // subItem: 'Del'
+                reCaptch: 'capToken',
+                csrf: null,
+                lang: setUserLang
+            }));
+        }
+        initer();
     }, []);
 
     return (

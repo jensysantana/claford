@@ -10,8 +10,9 @@ import HomeDefaultTopCategories from '~/components/partials/homepage/home-defaul
 import HomeDefaultProductListing from '~/components/partials/homepage/home-default/HomeDefaultProductListing';
 import HomeDefaultBanner from '~/components/partials/homepage/home-default/HomeDefaultBanner';
 import PageContainer from '~/components/layouts/PageContainer';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const HomepageDefaultPage = () => {
+const HomepageDefaultPage = (props) => {
     return (
         <PageContainer title="Multipurpose Marketplace React Ecommerce Template">
             <main id="homepage-1">
@@ -40,5 +41,11 @@ const HomepageDefaultPage = () => {
         </PageContainer>
     );
 };
-
+export async function getServerSideProps({ locale, ...rest }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common', 'auth', 'header'])),
+        }, // will be passed to the page component as props
+    }
+}
 export default HomepageDefaultPage;

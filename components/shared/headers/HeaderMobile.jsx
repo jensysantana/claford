@@ -18,12 +18,12 @@ class HeaderMobile extends Component {
                     </div>
                     <div className="header__right">
                         <ul className="navigation__extra">
-                            <li>
+                            <li className="sellonApp">
                                 <Link href="/vendor/become-a-vendor">
                                     <a>Sell on Martfury</a>
                                 </Link>
                             </li>
-                            <li>
+                            <li className="trackYour">
                                 <Link href="/account/order-tracking">
                                     <a>Tract your order</a>
                                 </Link>
@@ -67,6 +67,32 @@ class HeaderMobile extends Component {
                         </div>
                     </form>
                 </div>
+
+                <style jsx global>
+                    {
+                        `
+                        @media (max-width: 767px){
+                            .header--mobile .navigation__extra li.sellonApp, li.trackYour{
+                                display:none;
+                            }
+                            .header--mobile .navigation__extra li > a {
+                             display: initial; 
+                            }
+                            .header--mobile .navigation__extra  {
+                                display: initial !important; 
+                            }
+                        }
+
+                        @media (max-width: 479px){
+                            .header--mobile .header__top {
+                                display: inherit;
+                            }
+                            
+                        }
+                        
+                        `
+                    }
+                </style>
             </header>
         );
     }

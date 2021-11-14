@@ -13,17 +13,19 @@
 // console.log('---------env---------');
 // console.log(process.env);
 // console.log('---------env---------');
-export const ConfigFront = {
-    url: process.env.NODE_ENV === 'development' ? `http://localhost:3000` : 'https://claford.com',
-    appName: 'Claford',
-    logoApp: '',
-    publicAssets: `${process.env.PUBLIC_URL}/assets/`
-    // publicAssets: '/assets/'
-}
-export const ConfigBackend = {
-    backendBaseUrl: `http://localhost:4300`,
-    apiBase: '/api/v1',
-}
+
+
+// export const ConfigFront = {
+//     url: process.env.NODE_ENV === 'development' ? `http://localhost:3000` : 'https://claford.com',
+//     appName: 'Claford',
+//     logoApp: '',
+//     publicAssets: `${process.env.PUBLIC_URL}/assets/`
+//     // publicAssets: '/assets/'
+// }
+// export const ConfigBackend = {
+//     backendBaseUrl: `http://localhost:4300`,
+//     apiBase: '/api/v1',
+// }
 
 export const APP_CONFIG = {
     client: {
@@ -33,7 +35,7 @@ export const APP_CONFIG = {
         publicAssets: `${process.env.PUBLIC_URL}/assets/`
     },
     server: {
-        url: process.env.NODE_ENV === 'development' ? `http://localhost:4300` : 'https://sidetransactions.claford.com',
+        url: process.env.NODE_ENV === 'development' ? `http://localhost:43285` : 'https://transactions.claford.com',
         apiBase: '/api/v1'
     },
     authServer: {
