@@ -20,7 +20,7 @@ const MasterLayout = ({ children }) => {
             setUserLang: st.setUserLang,
         }
     })
-
+    console.log('setUserLang::::', setUserLang);
     function initEcomerceValues() {
         if (cookies) {
             if (cookies.cart) {

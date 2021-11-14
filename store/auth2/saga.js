@@ -26,9 +26,6 @@ function* loginSaga({ payload }) {
 }
 function* startRecoveryAccountSaga({ payload }) {
     try {
-        console.log(' 111111 -----------------------login())))))))-------------------------');
-        console.log(payload)
-        console.log(' 2222222 -----------------------login())))))))-------------------------');
         const apiResp = yield call(Api.AUTH.startAccountRecovery, payload);
         const { data, status } = apiResp;
         yield put(startRecoveryAccountSuccess({

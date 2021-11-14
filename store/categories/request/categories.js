@@ -11,7 +11,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'csrf-token': csrf,
-                "Accept-Language": 'en'
+                "Accept-Language": lang.code
             },
         }),
     }
