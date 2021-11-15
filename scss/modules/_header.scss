@@ -507,9 +507,18 @@
         }
     }
 
-    @include media('<lg') {
+    .ps-search--mobile-costume {
+        display: none;
+    }
+
+    // add this line
+    @include media('>sm') {
         .ps-search--mobile {
             display: none;
+        }
+        .ps-search--mobile-costume {
+            display: initial;
+            width: 430px;
         }
     }
 
@@ -700,4 +709,3 @@
         }
     }
 }
-

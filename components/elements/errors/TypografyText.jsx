@@ -8,8 +8,8 @@ function TypografyText({ className, shoIcon = true, children, text, ...rest }) {
     return (
         <>
             <Text className={`localp ` + className} {...rest} type="danger">
-                {shoIcon && <i className="fa fa-exclamation-circle" /> }
-                <SanitizerData text={text || children} /> 
+                {shoIcon && <i className="fa fa-exclamation-circle" />}
+                <SanitizerData text={text || children} />
             </Text>
             {/* <Text className={`localp ` + className} {...rest} type="danger"><i className="fa fa-exclamation-circle" /> <SanitizerData text={rest.children} /> {DataFormater.SanitizerData(rest.children)}</Text> */}
             <style jsx global>{`

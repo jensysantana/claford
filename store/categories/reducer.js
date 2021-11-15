@@ -5,11 +5,7 @@ export const CATEGORIES = {
 
     category: handleActions({
 
-        [actionTypes.CATEGORIES_SUCCESS]: (state, { payload: { fields, message, name, status, categories, ...action }} ) => {
-            // console.log(' 111111 -----------------------payload-------------------------');
-            // console.log(fields, message, name, status, categories)
-            // console.log(' 2222222 -----------------------payload-------------------------');
-            //
+        [actionTypes.CATEGORIES_SUCCESS]: (state, { payload: { fields, message, name, status, categories, ...action } }) => {
             return {
                 hasError: false,
                 message,
@@ -20,15 +16,11 @@ export const CATEGORIES = {
             }
         },
         [actionTypes.CATEGORIES_FAILED]: (state, payload) => {
-            console.log(' 111111 CATEGORIES_FAILED-----------------------payload-------------------------');
-            console.log(payload)
-            console.log(' 2222222 CATEGORIES_FAILED-----------------------payload-------------------------');
-            // { response: { status, data } }
             return {
                 hasError: true,
                 status: 50000,
                 categories: null,
-                message:' ERROR MESSAGE FAILED'
+                message: ' ERROR MESSAGE FAILED'
                 // ...data,
                 // isLoggedIn: false,
             };
@@ -36,8 +28,8 @@ export const CATEGORIES = {
     }, {
         categories: null,
         hasError: false,
-        message:'',
-        fields:null
+        message: '',
+        fields: null
     }),
 }
 
@@ -45,13 +37,13 @@ export const CATEGORIES = {
 /*
 export const CATEGORYLIST = createAction('CATEGORYLIST');
 export const fetchCategoryListAction =(data) =>  async (dispatch)=>{
-    
+
     try {
         const response = await Api.categories.getCategories()
         if (!response?.data || response?.status !== 200) {
             throw new Error('Sorry, we can not process your request.');
         }
-        
+
         if (response && response?.data) {
             return dispatch({type: CATEGORYLIST, categoriesData:response?.data});
         }
@@ -64,13 +56,13 @@ export const fetchCategoryListAction =(data) =>  async (dispatch)=>{
 export const SETVIEWEDCATEGORY = createAction('SETVIEWEDCATEGORY');
 
 export const fetchCategorySetViewedAction = (data) =>  async (dispatch)=>{
-    
+
     try {
         const response = await Api.categories.patchSetCategory(data);
         if (!response?.data || response?.status !== 200) {
             throw new Error('Sorry, we can not process your request.');
         }
-        
+
         if (response && response?.data) {
             return dispatch({type: SETVIEWEDCATEGORY, categorySetViewed:response?.data});
         }
@@ -80,13 +72,13 @@ export const fetchCategorySetViewedAction = (data) =>  async (dispatch)=>{
 }
 
 export const categoriesOfTheMonthAction =(param1, param2) =>  async (dispatch)=>{
-    
+
     try {
         const response = await Api.categories.getTopMonthCategories(param1, param2)
         if (!response?.data || response?.status !== 200) {
             throw new Error('Sorry, we can not process your request.');
         }
-        
+
         if (response && response?.data) {
             return dispatch({type: CATEGORIESOFTHEMONTH, categoriesOfTheMonth:response?.data});
         }
@@ -98,13 +90,13 @@ export const categoriesOfTheMonthAction =(param1, param2) =>  async (dispatch)=>
 
 export const CATEGORIESOFTHEMONTHGRAY = createAction('CATEGORIESOFTHEMONTHGRAY');
 export const categoriesOfTheMonthGrayAction =(param1, param2) =>  async (dispatch)=>{
-    
+
     try {
         const response = await Api.categories.getMonthGrayCategories(param1, param2)
         if (!response?.data || response?.status !== 200) {
             throw new Error('Sorry, we can not process your request.');
         }
-        
+
         if (response && response?.data) {
             return dispatch({type: CATEGORIESOFTHEMONTHGRAY, categoriesGray:response?.data});
         }
@@ -118,13 +110,13 @@ export const categoriesOfTheMonthGrayAction =(param1, param2) =>  async (dispatc
 // export const SETVIEWEDROOTSUBCATEGORY = createAction('SETVIEWEDROOTSUBCATEGORY');
 
 // export const fetchCategorySetViewedAction = (data) =>  async (dispatch)=>{
-    
+
 //     try {
 //         const response = await Api.categories.patchSetCategory(data);
 //         if (!response?.data || response?.status !== 200) {
 //             throw new Error('Sorry, we can not process your request.');
 //         }
-        
+
 //         if (response && response?.data) {
 //             return dispatch({type: SETVIEWEDROOTSUBCATEGORY, categorySetViewed:response?.data});
 //         }

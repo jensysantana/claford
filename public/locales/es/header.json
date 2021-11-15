@@ -1,5 +1,8 @@
 {
     "defaultHeaderPage":{
-        "1": "Comprar por departamento"
+        "1": "Comprar por departamento",
+        "2": "¡Bienvenido a {{APPNAME}} Tienda de compras en línea!",
+        "3": "Vender en {{APPNAME}}",
+        "4": "Rastrear paquete"
     }
 }

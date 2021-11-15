@@ -44,7 +44,7 @@ const HomepageDefaultPage = (props) => {
 export async function getServerSideProps({ locale, ...rest }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['common', 'auth', 'header'])),
+            ...(await serverSideTranslations(locale, ['common', 'auth', 'header', 'footer'])),
         }, // will be passed to the page component as props
     }
 }

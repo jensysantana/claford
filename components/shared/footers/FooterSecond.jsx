@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import footerCopyrightText from './footerCopyrightText';
 
 const FooterSecond = ({ classes }) => (
     <footer className={`ps-footer ps-footer--2 ${classes}`}>
@@ -144,14 +145,14 @@ const FooterSecond = ({ classes }) => (
                 </div>
             </div>
             <div className="ps-footer__copyright">
-                <p>&copy;2021 Martfury. All Rights Reserved</p>
+                <footerCopyrightText className="ps-footer__copyrighter" />
                 <p>
                     <span>We Using Safe Payment For:</span>
                     <Link href="/page/blank">
                         <a>
                             <img
                                 src="/static/img/payment-method/1.jpg"
-                                alt="martfury"
+                                alt={process.env.title}
                             />
                         </a>
                     </Link>
@@ -159,7 +160,7 @@ const FooterSecond = ({ classes }) => (
                         <a>
                             <img
                                 src="/static/img/payment-method/2.jpg"
-                                alt="martfury"
+                                alt={process.env.title}
                             />
                         </a>
                     </Link>
@@ -167,7 +168,7 @@ const FooterSecond = ({ classes }) => (
                         <a>
                             <img
                                 src="/static/img/payment-method/3.jpg"
-                                alt="martfury"
+                                alt={process.env.title}
                             />
                         </a>
                     </Link>
@@ -175,7 +176,7 @@ const FooterSecond = ({ classes }) => (
                         <a>
                             <img
                                 src="/static/img/payment-method/4.jpg"
-                                alt="martfury"
+                                alt={process.env.title}
                             />
                         </a>
                     </Link>
@@ -183,7 +184,7 @@ const FooterSecond = ({ classes }) => (
                         <a>
                             <img
                                 src="/static/img/payment-method/5.jpg"
-                                alt="martfury"
+                                alt={process.env.title}
                             />
                         </a>
                     </Link>

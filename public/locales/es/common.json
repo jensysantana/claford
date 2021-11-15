@@ -1,5 +1,16 @@
     {
         "1": "Con {{name}} usted puede",
+        "inputs": {
+            "1": "Buscar cualquier cosa"
+        },
+        "appPages": {
+            "homePage":{
+                "1": "¡Descarga la aplicación {{APPNAME}} ahora!",
+                "2": "Compra más rápida y fácilmente con nuestra aplicación. Obtén un enlace para descargar la aplicación en tu teléfono",
+                "3": "Suscribirse",
+                "4": "Introduce tu correo electrónico"
+            }
+        },
         "globalLang": {
             "1": "Email",
             "gSignIn": "Registrarse",
@@ -17,7 +28,7 @@
             "passwordRec": "Recuperar contraseña",
             "createAnAcc": "Crear una cuenta"
         },
-        "inputs": {},
+       
         "messages": {},
         "authFormsPageText": {
             "regTitle1of2": "Cla",

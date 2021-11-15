@@ -173,9 +173,8 @@ const SearchHeader = () => {
     return (
         <form
             className="ps-form--quick-search"
-            method="get"
-            action="/"
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+        >
             <div className="ps-form__categories">
                 <select className="form-control">{selectOptionView}</select>
             </div>
@@ -193,9 +192,8 @@ const SearchHeader = () => {
             </div>
             <button onClick={handleSubmit}>Search</button>
             <div
-                className={`ps-panel--search-result${
-                    isSearch ? ' active ' : ''
-                }`}>
+                className={`ps-panel--search-result${isSearch ? ' active ' : ''
+                    }`}>
                 <div className="ps-panel__content">{productItemsView}</div>
                 {loadMoreView}
             </div>

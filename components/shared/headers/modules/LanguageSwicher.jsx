@@ -1,31 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import langers from '../../../../data/langs';
 import { setUserLangRequest } from '~/store/setting/action';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { DataFormater } from '~/helpers/helper-classes';
+const gHelpers = new DataFormater();
 
-function langProccess(langs, getLangs, getArray = false) {
-    let newLangsArray = [], newObj = {};
-    for (const iter of getLangs) {
-        const resp = langs.find(lg => lg.code === iter);
-
-        if (getArray) {
-            newLangsArray.push(resp);
-        } else {
-            Object.assign(newObj, resp);
-            break;
-        }
-    }
-    if (getArray) {
-        return newLangsArray;
-    } else {
-        return newObj;
-    }
-}
-// const langsApp = langProccess(langers, ['en', 'es', 'fr']);
-
-// const savedLang = JSON.parse(localStorage.getItem('lang')) || null;
 function LanguageSwicher() {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -57,7 +38,7 @@ function LanguageSwicher() {
 
                 {
                     router.locales.map((locale) => {
-                        const respLocal = langProccess(langers, [locale]);
+                        const respLocal = gHelpers.langProccess(langers, [locale]);
                         return (
                             <li key={locale}>
                                 <Link href={router.asPath} locale={locale}>

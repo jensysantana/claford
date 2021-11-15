@@ -1,6 +1,4 @@
 import apiInterceptor from '../../../interceptor/api-interceptor';
-// import { APP_CONFIG } from "../../../config/config";
-// const { server: { apiBase }, authServer } = APP_CONFIG;
 const { authServer } = process.env.SERVERS;
 export default {
     AUTH: {

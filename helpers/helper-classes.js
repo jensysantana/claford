@@ -204,6 +204,29 @@ export class DataFormater { //change to
         const cleanText = DOMPurify.sanitize(text);
         return cleanText
     }
+
+    async langProccessAsync(langs, getLangs, getArray = false) {
+        return this.langProccess(langs, getLangs, getArray);
+    }
+
+    langProccess(langs, getLangs, getArray = false) {
+        let newLangsArray = [], newObj = {};
+        for (const iter of getLangs) {
+            const resp = langs.find(lg => lg.code === iter);
+
+            if (getArray) {
+                newLangsArray.push(resp);
+            } else {
+                Object.assign(newObj, resp);
+                break;
+            }
+        }
+        if (getArray) {
+            return newLangsArray;
+        } else {
+            return newObj;
+        }
+    }
 }
 
 export class AppRegExp {
@@ -299,6 +322,8 @@ export class CookiesHelper {
 
         document.cookie = name + "=" + (value || "") + expires + "; path=/;sameSite=strict;secure=true;";
     }
+
+
 }
 // + "domain=" + location.host + ";"
 

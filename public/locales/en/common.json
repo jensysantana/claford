@@ -1,5 +1,16 @@
 {
     "1": "With {{name}} you can",
+    "inputs":{
+        "1":"Search for anything"
+    },
+    "appPages":{
+        "homePage":{
+            "1":"Download {{APPNAME}} App Now!",
+            "2":"Shopping fastly and easily more with our app. Get a link to download the app on your phone",
+            "3":"Subscribe",
+            "4":"Email Address"
+        }
+    },
     "globalLang": {
         "1": "Email",
         "gSignIn": "Sign In",
@@ -17,7 +28,6 @@
         "passwordRec": "Password recovery",
         "createAnAcc": "Create account"
     },
-    "inputs": {},
     "messages": {},
     "form": {
         "input": {

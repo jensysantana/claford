@@ -1,5 +1,8 @@
 {
     "defaultHeaderPage":{
-        "1":"Shop by Department"
+        "1":"Shop by Department",
+        "2":"Welcome to {{APPNAME}} Online Shopping Store!",
+        "3":"Sell on {{APPNAME}}",
+        "4":"Tract your package"
     }
 }
