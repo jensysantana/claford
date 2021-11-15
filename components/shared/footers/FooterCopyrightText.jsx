@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import SanitizerData from '~/components/securities/SanitizerData';
 
-export default function footerCopyrightText({ className }) {
+export default function FooterCopyrightText({ className }) {
     const { t } = useTranslation();
     return (
         <>

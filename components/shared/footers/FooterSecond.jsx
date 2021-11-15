@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import footerCopyrightText from './footerCopyrightText';
+import FooterCopyrightText from './FooterCopyrightText';
 
 const FooterSecond = ({ classes }) => (
     <footer className={`ps-footer ps-footer--2 ${classes}`}>
@@ -145,7 +145,7 @@ const FooterSecond = ({ classes }) => (
                 </div>
             </div>
             <div className="ps-footer__copyright">
-                <footerCopyrightText className="ps-footer__copyrighter" />
+                <FooterCopyrightText className="ps-footer__copyrighter" />
                 <p>
                     <span>We Using Safe Payment For:</span>
                     <Link href="/page/blank">
