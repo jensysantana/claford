@@ -63,6 +63,7 @@ export function useExternalSignIn() {
 
             // google token : ID_TOKEN
             // const { tokenId } = response;
+            console.log("response 1111111");
             console.log(response);
             console.log(response);
             console.log(response);
@@ -71,8 +72,7 @@ export function useExternalSignIn() {
             console.log(response);
             console.log(response);
             console.log(response);
-            console.log(response);
-            console.log(response);
+            console.log('response 22222');
 
             if (response.status === "unknown") {
 
