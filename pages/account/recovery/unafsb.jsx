@@ -502,7 +502,7 @@ function Unafsb({ csrf, RECAPTCHA_SITE_KEY, appLang, userDataToken }) {
     )
 }
 
-export const getStaticProps = isUserAuthenticated(async ({ req, locale, query, ...rest }) => {
+export const getServerSideProps = isUserAuthenticated(async ({ req, locale, query, ...rest }) => {
     return {
         // will be passed to the page component as props
         props: {

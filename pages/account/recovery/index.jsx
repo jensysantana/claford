@@ -320,7 +320,7 @@ function Recovery({ csrf, RECAPTCHA_SITE_KEY, appLang, userDataToken, ...props }
 }
 
 
-export const getStaticProps = isUserAuthenticated(async ({ req, locale, query, ...rest }) => {
+export const getServerSideProps = isUserAuthenticated(async ({ req, locale, query, ...rest }) => {
     // console.log('context  route proooooootectedddd 1111111 ');
     // console.log(req.userDataToken);
     // console.log('context  route proooooootectedddd 222222222 ');
