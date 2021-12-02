@@ -1,0 +1,131 @@
+    {
+        "globalLang": {
+            "1": "Email",
+            "gSignIn": "Registrarse",
+            "gPassword": "Contraseña",
+            "gCPassword": "Confirmar contraseña",
+            "gPhone": "Teléfono",
+            "gPhoneCode": "Código",
+            "gName": "Nombre",
+            "gLname": "Apellido",
+            "gNewPassword": "Nueva contraseña",
+            "staySignedInNotSharedDevice": "¿Utilizas un dispositivo público o compartido? Desmarque para proteger su cuenta.",
+            "learnMore": "Aprenda más",
+            "or": "o",
+            "changeEmail": "Cambiar email",
+            "passwordRec": "Recuperar contraseña",
+            "createAnAcc": "Crear una cuenta"
+        },
+        "inputs": {},
+        "messages": {},
+        "authFormsPageText": {
+            "regTitle1of2": "Cla",
+            "regTitle2of2": "ford",
+            "regSubTitle": "Registrese ahora",
+            "regHaveAnAcc": "Ya tiene una cuenta?",
+            "h2AccVerify": "Asistente de verification de cuenta",
+            "h2AccAssist": "Asistente de cuenta",
+            "h2AccReg": "Asistente de registro de cuanta",
+            "logSubTitle": "Login para iniciar session",
+            "logRemMe": "Recordarme",
+            "logH2Acc": "Asistente de inicio de session",
+            "emailVMustBInbox": "Su correo electrónico para verificar su cuenta debe estar en la bandeja de entrada de su proveedor de correo electrónico.",
+            "checkYEmail": "Consultar su correo electrónico",
+            "gHelpSignIn": "Obténer ayuda para iniciar sesión",
+            "afSignInSentEmailV": "Después de su registro, se le envió un correo electrónico de verificación con un enlace a {VALUE}",
+            "iDontKWemail": "No sabe dónde está el email de verifición enviado?",
+            "iDidntgetTheEmail": "No recibí el correo electrónico",
+            "ifYCantFindEmail": "Si no puede encontrar nuestro mensaje, puede que esté en correos no deseados/papelera. El correo electrónico caduca en 24 horas.",
+            "haveIssue": "¿Tienes problema?",
+            "haveIssueWEmail": "Problemas con tu email?",
+            "haveIssueWPhone": "Problemas con tu teléfono?",
+            "forSecMakeSureIsYou": "Por su seguridad, debemos asegurarnos de que realmente sea usted. ¿Cómo desea que nos comuniquemos con usted?",
+            "forSecMakeSureIsYouAuthOtp": "Por su seguridad, debemos asegurarnos de que realmente autorizó los cambios en su cuenta",
+            "recoveryWithPhone": "Recuperar con número de teléfono.",
+            "recoveryWithEmail": "Recuperar con tu correo electrónico.",
+            "hEmailVerify": "Verificacion de correo electrónico",
+            "hEmailPassReset": "Restablecimiento de contraseña de correo electrónico",
+            "emailVerifySuccess": "Bienvenido, su cuenta ha sido verificada con éxito. Aprovecha e inicia sesión.",
+            "hEmailResetPass": "Restablecimiento de contraseña",
+            "hEmailResetPassSuccess": "Bueno, tu contraseña se ha cambiado correctamente. Aprovecha e inicia sesión.",
+            "resetYPass": "Restablecer su contraseña",
+            "titleRestPass": "Está a solo un paso de su nueva contraseña, recupere su contraseña ahora.",
+            "titleOtpSMS": "Ingrese su código",
+            "emailRecoverySendTo": "Enviar un correo electrónico de recuperación a {VALUE} con un enlace",
+            "emailRecoverySentTo": "Enviamos un correo electrónico de recuperación a {VALUE}",
+            "authCode": "Código de autenticación",
+            "passResetAssist": "Password reset assistance"
+        },
+        "buttonNames": {
+            "btnLogin": "Iniciar session",
+            "regist": "Registrarse",
+            "btnNext": "Siguiente",
+            "btnContinue": "Continuar",
+            "btnResend": "Reenviar",
+            "btnPleaseW": "Porfavor espere...",
+            "bthRegNAcc": "Crear una cuenta",
+            "bthIForgPass": "Olvide mi contraseña",
+            "bthSingInFace": "Iniciar session con Facebook",
+            "bthSingInGoog": "Iniciar session con Google+",
+            "btnChangePass": "Cambiar contraseña",
+            "btnVerifyCode": "Verificar código",
+            "sendAnOther": "enviar otro código",
+            "btnStaySignedIn": "Mantener la sesión iniciada",
+            "passwordAssist": "Asistente de contraseña",
+            "btnSendEmail": "Enviar email",
+            "btnRecAccWithPhone": "Recuperar cuenta con número de teléfono",
+            "btnRecAccWithEmail": "Recuperar con email.",
+            "btnReSend": "Re enviar"
+        },
+        "assistance": {
+            "accessingAcc24F7": "Obtener ayuda para acceder a su cuenta, comuníquese con nosotros 24/7."
+        },
+        "email": {
+            "1": "Introduzca su email.",
+            "2": "Email requiere mas caracteres.",
+            "3": "Email debe tener maximo 64 caracteres.",
+            "4": "Introduzca un email valido ej: email@email.com",
+            "emailUnique": "Una cuenta existe con este {PATH}: {VALUE}, verifique y vuelva a intentar.",
+            "emailNotExists": "Lo siento, no se encuentra ningun usuario registrado con este email."
+        },
+        "fname": {
+            "1": "Introduzca su nombre.",
+            "2": "Nombre debe tener entre 1 a 45 caracteres.",
+            "3": "Nombre debe tener entre 1 a 45 caracteres.",
+            "4": "Nombre debe tener solo letras y numeros."
+        },
+        "lname": {
+            "1": "Introduzca su apellido.",
+            "2": "Apellido debe tener entre 1 a 45 caracteres.",
+            "3": "Apellido debe tener entre 1 a 45 caracteres.",
+            "4": "Apellido debe tener solo letras y numeros."
+        },
+        "password": {
+            "1": "Introduzca su password.",
+            "2": "Password debe tener entre 8 a 32 caracteres.",
+            "3": "Password debe tener entre 8 a 32 caracteres.",
+            "4": "Password debe tener letras mayusculas, minusculas y numeros.",
+            "5": "No use palabras comunes para su password.",
+            "passwordUpdated": "¡Contraseña actualiza!"
+        },
+        "cpassword": {
+            "1": "Confirmar su password.",
+            "2": "Confirmar password debe tener entre 8 a 32 caracteres.",
+            "3": "Confirmar password debe tener entre 8 a 32 caracteres.",
+            "4": "Confirmar password y password deben ser iguales."
+        },
+        "phone": {
+            "1": "Introduzca su numero de telefono mobile.",
+            "2": "Telefono debe tener entre 10 a 15 caracteres.",
+            "3": "Telefono debe tener entre 10 a 15 caracteres.",
+            "4": "Formato de teléfono valido: {VALUE}",
+            "phoneSendText": "Bueno, envíame un mensaje de texto a {VALUE} de recuperación, para restablecer la contraseña de mi cuenta.",
+            "phoneNinv": "Numero de telefono invalido.",
+            "phoneCInvCode": "Código de país no válido.",
+            "phoneToShort": "Número de teléfono demasiado corto.",
+            "phoneToLong": "Número de teléfono demasiado largo."
+        },
+        "phoneCode": {
+            "1": "Ingrese un código de verificación válido de 6 dígitos numéricos."
+        }
+    }

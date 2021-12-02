@@ -1,0 +1,19 @@
+.wrapper_v2_auth_right {
+    width          : 100%;
+    max-width      : 520px;
+    height         : 425px;
+    max-height     : 450px;
+    margin         : 0 auto;
+    position       : relative;
+    background     : #fff !important;
+    border-radius  : 2px;
+    box-shadow     : 0 0 14px 0 #dee5eb;
+    border         : solid 1px #d7e1ec;
+    padding        : 25px 30px 25px 30px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    flex-direction : column;
+}
+
+/* // overflow:hidden; */
