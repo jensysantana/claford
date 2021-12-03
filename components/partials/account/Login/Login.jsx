@@ -11,7 +11,7 @@ import { FieldValidations } from '~/validations/authValidationFields';
 import { DataFormater } from '~/helpers/helper-classes';
 import Logo from '~/components/elements/common/Logo';
 import ButtonWithLoadding from '~/components/elements/Button';
-import { login } from '~/store/auth2/action';
+// import { login } from '~/store/auth2/action';
 import GoogleSignInButton from '~/components/elements/GoogleSignInButton/GoogleSignInButton';
 import FaceboockSignInButton from '~/components/elements/FaceboockSignInButton/FaceboockSignInButton';
 import TypografyText from '~/components/elements/errors/TypografyText';
@@ -49,6 +49,7 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
         validationFields(lang).then(data => {
             setValidations(data);
         });
+        localStorage.clear()
         removeCookie('__UVACC__');
         removeCookie('__SECCODE__');
         removeCookie('__recoveryUnafsb');
@@ -135,7 +136,7 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
                         const dataFormater = new DataFormater();
                         const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
                         //CUAI OR USER AUTH ID
-                        // localStorage.setItem('__CUAI', newMessage);
+                        localStorage.setItem('__CUAI', newMessage);
 
                         if (navigaTo) {
                             // router(navigaTo);
@@ -197,8 +198,6 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
             return;
         }
     }, [selecStore?.userSignedIn]);
-
-
 
     return (
         <div className="ps-my-account">
