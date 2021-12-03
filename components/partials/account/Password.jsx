@@ -100,7 +100,7 @@ export default function Password({ csrf, navigaTo, RECAPTCHA_SITE_KEY, appLang }
                         const dataFormater = new DataFormater();
                         const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
                         //CUAI OR USER AUTH ID
-                        localStorage.setItem('__CUAI', newMessage);
+                        // localStorage.setItem('__CUAI', newMessage);
                         if (navigaTo) {
                             // router(navigaTo);
                             window.location.pathname = navigaTo;

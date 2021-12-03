@@ -30,7 +30,7 @@ export default function FaceboockSignInButton({
                 // appId="1059496111259761"
                 appId={clientId}
                 autoLoad={false}
-                // fields="name,email,picture"
+                fields="name,email,first_name,last_name,picture"
                 // onClick={}
                 callback={handleCredentialResponseFaceboock({
                     csrf,

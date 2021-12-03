@@ -5,9 +5,7 @@ import { useRouter } from 'next/router';
 import { Form, Input, Checkbox } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
-import { useDispatch } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FieldValidations } from '~/validations/authValidationFields';
 import { DataFormater } from '~/helpers/helper-classes';
@@ -16,6 +14,7 @@ import ButtonWithLoadding from '~/components/elements/Button';
 import { login } from '~/store/auth2/action';
 import GoogleSignInButton from '~/components/elements/GoogleSignInButton/GoogleSignInButton';
 import FaceboockSignInButton from '~/components/elements/FaceboockSignInButton/FaceboockSignInButton';
+import TypografyText from '~/components/elements/errors/TypografyText';
 // import { APP_CONFIG } from '~/config/config';
 
 async function validationFields(lang) {
@@ -57,6 +56,8 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
             return;
         }
     }, [])
+
+
 
     async function handleSubmit(values) {
         if (values.email === '') return;
@@ -107,6 +108,96 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
         wrapperCol: { span: 12, offset: 0 },
     }
 
+    const selecStore = useSelector(state => {
+        const { userSignedIn, startRecoveryAcc } = state;
+        return {
+            userSignedIn,
+            startRecoveryAcc
+        };
+    })
+
+    const [dBMessage, setDBMessage] = useState(() => {
+        return {
+            message: '',
+            hasError: false
+        }
+    })
+
+    useEffect(() => {
+        async function afterInit() {
+            if (selecStore.userSignedIn.name) {
+                const { fields, name, message, hasError } = selecStore.userSignedIn;
+
+                const fieldSDbValidate = fields;
+                switch (name) {
+                    case 'success':
+                        setShowLoadding(() => false);
+                        const dataFormater = new DataFormater();
+                        const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
+                        //CUAI OR USER AUTH ID
+                        // localStorage.setItem('__CUAI', newMessage);
+
+                        if (navigaTo) {
+                            // router(navigaTo);
+                            window.location.pathname = navigaTo;
+                            return;
+                        }
+                        window.location.pathname = '/';
+                        break;
+
+                    case 'ValidationFeedBackError':
+                        setShowLoadding(() => false);
+                        setDBMessage(() => {
+                            return {
+                                message: message,
+                                hasError: hasError
+                            }
+                        })
+                        break;
+                    case 'ValidationError':
+                        setShowLoadding(() => false);
+                        let newObj = [];
+                        newObj = DataFormater.transFormValidationErrorMessage(fieldSDbValidate);
+                        form.setFields(newObj);
+                        // form.setFields([
+                        //     {
+                        //         name: 'email',
+                        //         value: email,
+                        //         errors: ['errorMsg']
+                        //     }
+                        // ]);
+                        break;
+                    case 'TemporaryUnable':
+                        setShowLoadding(() => false);
+                        setDBMessage(() => {
+                            return {
+                                message: message,
+                                hasError: hasError
+                            }
+                        })
+                        break;
+
+                    default:
+                        setShowLoadding(() => false);
+                        if (hasError) {
+                            setDBMessage(() => {
+                                return {
+                                    message: t('auth:text.20'),
+                                    hasError: true
+                                }
+                            })
+                        }
+                        break;
+                }
+            }
+        }
+        afterInit();
+
+        return () => {
+            return;
+        }
+    }, [selecStore?.userSignedIn]);
+
 
 
     return (
@@ -132,6 +223,11 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
                     <div className="ps-tab active" id="register">
                         <div className="ps-form__content">
                             <h5 className="mb-5">{t('auth:text.21')}</h5>
+                            {dBMessage.message && dBMessage.hasError && <div className="mb-5">
+                                {/* <ExclamationCircleOutlined /> */}
+                                <TypografyText text={dBMessage.message} className="" level="2" type="danger" >
+                                </TypografyText>
+                            </div>}
                             <div className="form-group">
                                 <Form.Item
                                     name="email"
@@ -342,13 +438,9 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
                         margin-left:15px;
                         color:#332a2a;
                     }
-
-                   
                 `}
             </style>
-
         </div>
-
     );
 }
 
