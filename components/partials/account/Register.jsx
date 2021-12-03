@@ -13,6 +13,8 @@ import TypografyText from '../../elements/errors/TypografyText';
 import { DataFormater } from '~/helpers/helper-classes';
 import ButtonWithLoadding from '~/components/elements/Button';
 import Logo from '~/components/elements/common/Logo';
+import GoogleSignInButton from '~/components/elements/GoogleSignInButton/GoogleSignInButton';
+import FaceboockSignInButton from '~/components/elements/FaceboockSignInButton/FaceboockSignInButton';
 
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // import { useTranslation } from 'next-i18next';
@@ -48,7 +50,7 @@ async function validationFields(lang) {
     return await fieldValidations.validationGenerator(fields, lang);
 }
 
-export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }) {
+export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, GOOGLE_CLIENT_ID, FACEBOOK_APP_ID, ...props }) {
     const gReRef = useRef();
     const router = useRouter();
     const lang = useTranslation();
@@ -56,9 +58,10 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
     const dispatch = useDispatch();
     const [form] = Form.useForm();
     const selecStore = useSelector(state => {
-        const { user } = state;
+        const { user, userSignedIn } = state;
         return {
-            user
+            user,
+            userSignedIn
         };
     });
 
@@ -148,6 +151,12 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
             case 'success':
                 setShowLoadding(() => false);
                 iniAppS();
+                setDBMessage(() => {
+                    return {
+                        message: '',
+                        hasError: false
+                    }
+                });
                 break;
 
             case 'ValidationFeedBackError':
@@ -269,6 +278,81 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
         // })
     }
 
+    useEffect(() => {
+        async function afterInit() {
+            if (selecStore.userSignedIn.name) {
+                const { fields, name, message, hasError } = selecStore.userSignedIn;
+
+                const fieldSDbValidate = fields;
+                switch (name) {
+                    case 'success':
+                        setShowLoadding(() => false);
+                        const dataFormater = new DataFormater();
+                        const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
+                        //CUAI OR USER AUTH ID
+                        // localStorage.setItem('__CUAI', newMessage);
+
+                        // if (navigaTo) {
+                        //     // router(navigaTo);
+                        //     window.location.pathname = navigaTo;
+                        //     return;
+                        // }
+                        window.location.pathname = '/';
+                        break;
+
+                    case 'ValidationFeedBackError':
+                        setShowLoadding(() => false);
+                        setDBMessage(() => {
+                            return {
+                                message: message,
+                                hasError: hasError
+                            }
+                        })
+                        break;
+                    case 'ValidationError':
+                        setShowLoadding(() => false);
+                        let newObj = [];
+                        newObj = DataFormater.transFormValidationErrorMessage(fieldSDbValidate);
+                        form.setFields(newObj);
+                        // form.setFields([
+                        //     {
+                        //         name: 'email',
+                        //         value: email,
+                        //         errors: ['errorMsg']
+                        //     }
+                        // ]);
+                        break;
+                    case 'TemporaryUnable':
+                        setShowLoadding(() => false);
+                        setDBMessage(() => {
+                            return {
+                                message: message,
+                                hasError: hasError
+                            }
+                        })
+                        break;
+
+                    default:
+                        setShowLoadding(() => false);
+                        if (hasError) {
+                            setDBMessage(() => {
+                                return {
+                                    message: t('auth:text.20'),
+                                    hasError: true
+                                }
+                            })
+                        }
+                        break;
+                }
+            }
+        }
+        afterInit();
+
+        return () => {
+            return;
+        }
+    }, [selecStore?.userSignedIn]);
+
     return (
         <div className="ps-my-account">
             <div className="container">
@@ -289,10 +373,11 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
                             <Logo />
                         </div>
                     </div>
-                    {selecStore.user.message && selecStore.user.hasError && <div className="my-5">
+
+                    {dBMessage.message && dBMessage.hasError && <div className="my-5">
                         {/* <ExclamationCircleOutlined /> */}
                         <TypografyText className="" level="2" type="danger">
-                            {selecStore.user.message}
+                            {dBMessage.message}
                         </TypografyText>
                     </div>}
 
@@ -419,14 +504,26 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
                                 <ButtonWithLoadding showLoadding={showLoadding}>
                                     {t('auth:buttons.2')}
                                 </ButtonWithLoadding>
-                                <p className="mt-3">
-                                    {t('auth:text.46')} <Link href="/account/login">
-                                        <a className="text-primary">{t('auth:buttons.1')}</a>
-                                    </Link>
-                                </p>
                             </div>
+                            <GoogleSignInButton
+                                clientId={GOOGLE_CLIENT_ID}
+                                csrf={csrf}
+                                staySignedIn={false}
+                                lang={appLang.lang}
+                            />
+                            <FaceboockSignInButton
+                                clientId={FACEBOOK_APP_ID}
+                                csrf={csrf}
+                                staySignedIn={false}
+                                lang={appLang.lang}
+                            />
+                            <p className="mt-3">
+                                {t('auth:text.46')} <Link href="/account/login">
+                                    <a className="text-primary">{t('auth:buttons.1')}</a>
+                                </Link>
+                            </p>
                         </div>
-                        <div className="ps-form__footer">
+                        {/* <div className="ps-form__footer">
                             <p>Connect with:</p>
                             <ul className="ps-list--social">
                                 <li>
@@ -450,7 +547,7 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, ...props }
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </Form>
             </div>

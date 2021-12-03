@@ -19,7 +19,9 @@ export const getServerSideProps = isUserAuthenticated(async ({ req, locale, quer
         props: {
             ...(await serverSideTranslations(locale, ['common', 'auth', 'header'])),
             userDataToken: req.userDataToken,
-            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY
+            RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
+            GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+            FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID
         }
     }
 
