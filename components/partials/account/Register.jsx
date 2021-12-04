@@ -211,7 +211,7 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, GOOGLE_CLI
                 break;
         }
         return () => {
-            return;
+
         }
     }, [selecStore.user]);
 
@@ -220,7 +220,7 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, GOOGLE_CLI
             setValidations(data);
         });
         return () => {
-            return;
+
         }
     }, [])
 
@@ -349,7 +349,8 @@ export default function Register({ csrf, appLang, RECAPTCHA_SITE_KEY, GOOGLE_CLI
         afterInit();
 
         return () => {
-            return;
+
+
         }
     }, [selecStore?.userSignedIn]);
 

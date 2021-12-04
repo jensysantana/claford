@@ -48,10 +48,60 @@ const AccountQuickLinks = (props) => {
         </li>
     ));
 
+    return (
+
+        <div className="row">
+
+            <div className="ps-block--user-account">
+                <i className="icon-user"></i>
+                <div className="ps-block__content">
+                    <ul className="ps-list--arrow">
+                        {linksView}
+                        <li className="ps-block__footer">
+                            <Link href="#">
+                                <a onClick={(e) => handleLogout(e)}>
+                                    {/* Logout */}
+                                    {t('auth:buttons.26')}
+                                </a>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div className="ps-block--user-header">
+                <div className="ps-block__right">
+                    <Link href="/account/login">
+                        {/* <a>Login</a> */}
+                        <a className="auth-action-link">{t('auth:buttons.1')}</a>
+                    </Link>
+                    <Link href="/account/register">
+                        {/* <a>Register</a> */}
+                        <a className="auth-action-link">{t('auth:buttons.27')}</a>
+                    </Link>
+                </div>
+
+            </div>
+
+            <style jsx>
+                {`
+                    .ps-block--user-account{
+                        background:none;
+                    }
+                    .auth-action-link{
+                        font-weight: 600 !important;
+                        letter-spacing: 1px;
+                    }
+                `}
+            </style>
+        </div>
+    );
     if (isLoggedIn === true) {
         return (
             <div className="ps-block--user-account">
-                <i className="icon-user"></i>
+                <div className="ps-block__left">
+                    <i className="icon-user"></i>
+                </div>
                 <div className="ps-block__content">
                     <ul className="ps-list--arrow">
                         {linksView}

@@ -13,6 +13,9 @@ import PageContainer from '~/components/layouts/PageContainer';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const HomepageDefaultPage = (props) => {
+
+
+
     return (
         <PageContainer title="Multipurpose Marketplace React Ecommerce Template">
             <main id="homepage-1">
@@ -42,6 +45,7 @@ const HomepageDefaultPage = (props) => {
     );
 };
 export async function getServerSideProps({ locale, ...rest }) {
+    console.log('222222222222222 INDEX....');
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common', 'auth', 'header', 'footer'])),

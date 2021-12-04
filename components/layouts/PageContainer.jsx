@@ -31,6 +31,8 @@ const PageContainer = ({
         titleView = process.env.title + ' | ' + process.env.titleDescription;
     }
 
+    console.log('PageContainer-----');
+
     return (
         <>
             <Head>

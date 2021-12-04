@@ -28,6 +28,8 @@ async function validationFields(lang) {
 }
 
 export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACEBOOK_APP_ID, ...rest }) {
+
+    console.log(csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACEBOOK_APP_ID,);
     const dispatch = useDispatch();
     const lang = useTranslation();
     const { t, i18n } = lang;
@@ -49,12 +51,11 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
         validationFields(lang).then(data => {
             setValidations(data);
         });
-        localStorage.clear()
         removeCookie('__UVACC__');
         removeCookie('__SECCODE__');
         removeCookie('__recoveryUnafsb');
         return () => {
-            return;
+
         }
     }, [])
 
@@ -134,9 +135,9 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
                     case 'success':
                         setShowLoadding(() => false);
                         const dataFormater = new DataFormater();
-                        const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
+                        // const newMessage = await dataFormater.encodeURIUnEscapeCharacters({ data: JSON.stringify(selecStore.userSignedIn), useComponent: true });
                         //CUAI OR USER AUTH ID
-                        localStorage.setItem('__CUAI', newMessage);
+                        // localStorage.setItem('__CUAI', newMessage);
 
                         if (navigaTo) {
                             // router(navigaTo);
@@ -195,7 +196,7 @@ export default function SignIn({ csrf, navigaTo, appLang, GOOGLE_CLIENT_ID, FACE
         afterInit();
 
         return () => {
-            return;
+
         }
     }, [selecStore?.userSignedIn]);
 

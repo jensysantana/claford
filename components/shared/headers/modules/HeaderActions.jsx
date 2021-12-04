@@ -17,7 +17,7 @@ const HeaderActions = ({ ecomerce, auth }) => {
     if (isLoggedIn && Boolean(isLoggedIn) === true) {
         headerAuthView = <AccountQuickLinks isLoggedIn={true} />;
     } else {
-        headerAuthView = <AccountQuickLinks isLoggedIn={false} />;
+        headerAuthView = <AccountQuickLinks isLoggedIn={true} />;
     }
     return (
         <div className="header__actions">
@@ -38,7 +38,7 @@ const HeaderActions = ({ ecomerce, auth }) => {
                 </a>
             </Link>
             <MiniCart />
-            {headerAuthView}
+            {<AccountQuickLinks isLoggedIn={true} />}
         </div>
     );
 };

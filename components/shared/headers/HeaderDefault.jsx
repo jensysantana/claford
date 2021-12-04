@@ -11,6 +11,10 @@ const HeaderDefault = () => {
         if (process.browser) {
             window.addEventListener('scroll', stickyHeader);
         }
+
+        return () => {
+
+        }
     }, []);
 
     return (

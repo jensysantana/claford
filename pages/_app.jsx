@@ -42,8 +42,10 @@ function App({ Component, pageProps }) {
         }
         getCsrf();
 
+        console.log('11111111111111111111 ______APPPPP');
+
         return () => {
-            return false;
+
         }
     }, []);
     const { setUserLang } = useSelector(st => {
