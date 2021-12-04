@@ -31,9 +31,10 @@ const MasterLayout = ({ children }) => {
         console.log('MasterLayout ((((((((((');
         console.log(window.location);
         console.log('MasterLayout ((((((((((');
-
-        if (window.location.origin.includes('www') || window.location.href.includes('www')) {
-            window.location.href = window.location.href.replace('www', '');
+        // let org = 'https://www.claford.com';
+        // alert(org.replace('www.', ''));
+        if (window.location.origin.includes('www.') || window.location.href.includes('www.')) {
+            window.location.href = window.location.href.replace('www.', '');
         }
         return () => {
 
